@@ -1,0 +1,26 @@
+
+.container {
+    width: 1000px;
+    height: 1000px;
+    display: flex;
+    flex-direction: column;
+}
+
+#screen {
+    background-color: aqua;
+    width: 400px;
+    height: 100px;
+    border: 30px solid aqua;
+    border-radius: 10px;
+    align-items: center;
+}
+
+#calculator {
+    background-color: grey;
+    border-radius: 10px;
+    border: 2px solid #888;
+    width: 500px;
+    height: 500px;
+    display: flex;
+    flex-direction: row;
+}
