@@ -29,3 +29,7 @@ const operations = {
 const operation = 'add';
 const result = operations[operation](5, 3);
 console.log(result); // Output: 8
+
+function write(text, ch) {
+    
+}

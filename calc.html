@@ -11,22 +11,22 @@
         
         <div id="calculator">
             <div id="screen">
-                <div id="text">1234567890</div>
+                <div id="text">0</div>
             </div>
             <div class="button_container">
-                <button class="num_button" id="1">1</button>
-                <button class="num_button" id="2">2</button>
-                <button class="num_button" id="3">3</button>
+                <button class="num_button" id="one">1</button>
+                <button class="num_button" id="two">2</button>
+                <button class="num_button" id="three">3</button>
                 <button class="op_button" id="add">+</button>
-                <button class="num_button" id="4">4</button>
-                <button class="num_button" id="5">5</button>
-                <button class="num_button" id="6">6</button>
+                <button class="num_button" id="four">4</button>
+                <button class="num_button" id="five">5</button>
+                <button class="num_button" id="six">6</button>
                 <button class="op_button" id="minus">-</button>
-                <button class="num_button" id="7">7</button>
-                <button class="num_button" id="8">8</button>
-                <button class="num_button" id="9">9</button>
+                <button class="num_button" id="seven">7</button>
+                <button class="num_button" id="eight">8</button>
+                <button class="num_button" id="nine">9</button>
                 <button class="op_button" id="x">x</button>
-                <button class="num_button" id="0">0</button>
+                <button class="num_button" id="zero">0</button>
                 <button class="num_button" id="decimal">.</button>
                 <button class="num_button" id="del">DEL</button>
                 <button class="op_button" id="divide">&divide</button>
@@ -41,16 +41,16 @@
     <script>
         const screen_text = document.querySelector('#text');
 
-        const button1 = document.querySelector('#1');
-        const button2 = document.querySelector('#2');
-        const button3 = document.querySelector('#3');
-        const button4 = document.querySelector('#4');
-        const button5 = document.querySelector('#5');
-        const button6 = document.querySelector('#6');
-        const button7 = document.querySelector('#7');
-        const button8 = document.querySelector('#8');
-        const button9 = document.querySelector('#9');
-        const button0 = document.querySelector('#0');
+        const button1 = document.querySelector('#one');
+        const button2 = document.querySelector('#two');
+        const button3 = document.querySelector('#three');
+        const button4 = document.querySelector('#four');
+        const button5 = document.querySelector('#five');
+        const button6 = document.querySelector('#six');
+        const button7 = document.querySelector('#seven');
+        const button8 = document.querySelector('#eight');
+        const button9 = document.querySelector('#nine');
+        const button0 = document.querySelector('#zero');
 
         const add_button = document.querySelector('#add');
         const minus_button = document.querySelector('#minus');
@@ -61,15 +61,27 @@
         const equal_button = document.querySelector('#equal');
         const clear_button = document.querySelector('#clear');
 
+        let math_text = [];
 
         button1.addEventListener("click", function(e) {
                 e.preventDefault();
                 //e.stopPropagation();
                 e.stopImmediatePropagation();
                 //console.log("roc");
-                square_test(parseInt(slider_text.textContent));
-            
+                // square_test(parseInt(slider_text.textContent));
+                screen_text.textContent = screen_text.textContent + "1";
             });
+
+        button2.addEventListener("click", function(e) {
+                e.preventDefault();
+                //e.stopPropagation();
+                e.stopImmediatePropagation();
+                //console.log("roc");
+                // square_test(parseInt(slider_text.textContent));
+                screen_text.textContent = screen_text.textContent + "2";
+            });
+
+        
 
     </script>
     
