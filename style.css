@@ -15,6 +15,11 @@
     align-items: center;
     margin-left: 30px;
     margin-top: 20px;
+    font-size:40px;
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-weight: 900;
+    display: flex;
+    flex-direction: row;
    
 }
 
@@ -23,7 +28,7 @@
     border-radius: 10px;
     border: 2px solid #888;
     width: 500px;
-    height: 500px;
+    height: 700px;
     display: flex;
     flex-direction: column;
     justify-items: center;
@@ -35,19 +40,23 @@
 }
 
 .num_button {
-    font-size: medium;
+    font-size:x-large;
     background-color: mintcream;
     color: black;
     width: 60px;
     height: 60px;
     margin: 30px;
+    border-radius: 15px;
+    border: 2px solid mintcream;
 }
 
 .op_button {
-    font-size: medium;
+    font-size:x-large;
     background-color: red;
     color: white;
     width: 60px;
     height: 60px;
     margin: 30px;
+    border-radius: 15px;
+    border: 2px solid red;
 }

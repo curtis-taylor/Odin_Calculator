@@ -11,16 +11,67 @@
         
         <div id="calculator">
             <div id="screen">
-                <div>test</div>
+                <div id="text">1234567890</div>
             </div>
             <div class="button_container">
                 <button class="num_button" id="1">1</button>
                 <button class="num_button" id="2">2</button>
                 <button class="num_button" id="3">3</button>
                 <button class="op_button" id="add">+</button>
+                <button class="num_button" id="4">4</button>
+                <button class="num_button" id="5">5</button>
+                <button class="num_button" id="6">6</button>
+                <button class="op_button" id="minus">-</button>
+                <button class="num_button" id="7">7</button>
+                <button class="num_button" id="8">8</button>
+                <button class="num_button" id="9">9</button>
+                <button class="op_button" id="x">x</button>
+                <button class="num_button" id="0">0</button>
+                <button class="num_button" id="decimal">.</button>
+                <button class="num_button" id="del">DEL</button>
+                <button class="op_button" id="divide">&divide</button>
+                <button class="num_button" id="clr">CLR</button>
+                <button class="op_button" id="equal">=</button>
             </div>
+
         </div>
     </div>
+
+     <script type="text/javascript" src="calc.js"></script>
+    <script>
+        const screen_text = document.querySelector('#text');
+
+        const button1 = document.querySelector('#1');
+        const button2 = document.querySelector('#2');
+        const button3 = document.querySelector('#3');
+        const button4 = document.querySelector('#4');
+        const button5 = document.querySelector('#5');
+        const button6 = document.querySelector('#6');
+        const button7 = document.querySelector('#7');
+        const button8 = document.querySelector('#8');
+        const button9 = document.querySelector('#9');
+        const button0 = document.querySelector('#0');
+
+        const add_button = document.querySelector('#add');
+        const minus_button = document.querySelector('#minus');
+        const x_button = document.querySelector('#x');
+        const divide_button = document.querySelector('#divide');
+
+        const decimal_button = document.querySelector('#decimal');
+        const equal_button = document.querySelector('#equal');
+        const clear_button = document.querySelector('#clear');
+
+
+        button1.addEventListener("click", function(e) {
+                e.preventDefault();
+                //e.stopPropagation();
+                e.stopImmediatePropagation();
+                //console.log("roc");
+                square_test(parseInt(slider_text.textContent));
+            
+            });
+
+    </script>
     
 </body>
 </html>
