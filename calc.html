@@ -70,6 +70,7 @@
                 e.stopImmediatePropagation();
                 //console.log("roc");
                 // square_test(parseInt(slider_text.textContent));
+                operator_entry_mode = true;
                 screen_text.textContent = screen_text.textContent + "1";
             });
 
@@ -79,6 +80,7 @@
                 e.stopImmediatePropagation();
                 //console.log("roc");
                 // square_test(parseInt(slider_text.textContent));
+                operator_entry_mode = true;
                 screen_text.textContent = screen_text.textContent + "2";
         });
 
@@ -88,7 +90,10 @@
                 e.stopImmediatePropagation();
                 //console.log("roc");
                 // square_test(parseInt(slider_text.textContent));
-                screen_text.textContent = screen_text.textContent + " + ";
+               if(operator_entry_mode) {
+                   screen_text.textContent = screen_text.textContent + " + "; 
+               }
+               operator_entry_mode = false;
         });
 
         minus_button.addEventListener("click", function(e) {
@@ -100,7 +105,7 @@
                 if(operator_entry_mode) {
                    screen_text.textContent = screen_text.textContent + " - "; 
                 }
-                
+                operator_entry_mode = false;
         });
 
         x_button.addEventListener("click", function(e) {
@@ -109,7 +114,10 @@
                 e.stopImmediatePropagation();
                 //console.log("roc");
                 // square_test(parseInt(slider_text.textContent));
-                screen_text.textContent = screen_text.textContent + " x ";
+                if(operator_entry_mode) {
+                   screen_text.textContent = screen_text.textContent + " x "; 
+                }
+                operator_entry_mode = false;
         });
 
         divide_button.addEventListener("click", function(e) {
@@ -118,7 +126,10 @@
                 e.stopImmediatePropagation();
                 //console.log("roc");
                 // square_test(parseInt(slider_text.textContent));
-                screen_text.textContent = screen_text.textContent + " " + "\u00F7" + " ";
+                if(operator_entry_mode) {
+                   screen_text.textContent = screen_text.textContent + " " + "\u00F7" + " ";
+                }
+                operator_entry_mode = false;
         })
 
 
