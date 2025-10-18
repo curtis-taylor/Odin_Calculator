@@ -61,7 +61,8 @@
         const equal_button = document.querySelector('#equal');
         const clear_button = document.querySelector('#clear');
 
-        let math_text = [];
+        let math_statement = [];
+        let operator_entry_mode = false;
 
         button1.addEventListener("click", function(e) {
                 e.preventDefault();
@@ -79,7 +80,48 @@
                 //console.log("roc");
                 // square_test(parseInt(slider_text.textContent));
                 screen_text.textContent = screen_text.textContent + "2";
-            });
+        });
+
+        add_button.addEventListener("click", function(e) {
+                e.preventDefault();
+                //e.stopPropagation();
+                e.stopImmediatePropagation();
+                //console.log("roc");
+                // square_test(parseInt(slider_text.textContent));
+                screen_text.textContent = screen_text.textContent + " + ";
+        });
+
+        minus_button.addEventListener("click", function(e) {
+                e.preventDefault();
+                //e.stopPropagation();
+                e.stopImmediatePropagation();
+                //console.log("roc");
+                // square_test(parseInt(slider_text.textContent));
+                if(operator_entry_mode) {
+                   screen_text.textContent = screen_text.textContent + " - "; 
+                }
+                
+        });
+
+        x_button.addEventListener("click", function(e) {
+                e.preventDefault();
+                //e.stopPropagation();
+                e.stopImmediatePropagation();
+                //console.log("roc");
+                // square_test(parseInt(slider_text.textContent));
+                screen_text.textContent = screen_text.textContent + " x ";
+        });
+
+        divide_button.addEventListener("click", function(e) {
+                e.preventDefault();
+                //e.stopPropagation();
+                e.stopImmediatePropagation();
+                //console.log("roc");
+                // square_test(parseInt(slider_text.textContent));
+                screen_text.textContent = screen_text.textContent + " " + "\u00F7" + " ";
+        })
+
+
 
         
 
