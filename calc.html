@@ -61,8 +61,9 @@
         const equal_button = document.querySelector('#equal');
         const clear_button = document.querySelector('#clear');
 
-        let math_statement = [];
+        let math_statement = {};
         let operator_entry_mode = false;
+        let decimal_not_used = false;
 
         button1.addEventListener("click", function(e) {
                 e.preventDefault();
@@ -92,7 +93,10 @@
                 // square_test(parseInt(slider_text.textContent));
                if(operator_entry_mode) {
                    screen_text.textContent = screen_text.textContent + " + "; 
-               }
+                   math_statement['num1'] = screen_text.textContent;
+                   math_statement['op'] = screen_text.textContent;
+
+                }
                operator_entry_mode = false;
         });
 
@@ -104,6 +108,7 @@
                 // square_test(parseInt(slider_text.textContent));
                 if(operator_entry_mode) {
                    screen_text.textContent = screen_text.textContent + " - "; 
+                   
                 }
                 operator_entry_mode = false;
         });
