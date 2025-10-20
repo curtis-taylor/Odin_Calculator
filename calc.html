@@ -62,6 +62,8 @@
         const clear_button = document.querySelector('#clear');
 
         let math_statement = {};
+        let math_statement_list = [];
+        let mode_state_machine = {num1:true, operator:false, num2:false, decimal_used:false};
         let operator_entry_mode = false;
         let decimal_not_used = false;
 
@@ -72,9 +74,13 @@
                 //console.log("roc");
                 // square_test(parseInt(slider_text.textContent));
                 operator_entry_mode = true;
+                mode_state_machine['num1'] = false;
+                mode_state_machine['operator'] = true;
+
                 if(screen_text.textContent == '0') {
                     screen_text.textContent = "1";
                 } else {
+
                     screen_text.textContent = screen_text.textContent + "1"
                 }
             });
@@ -86,29 +92,50 @@
                 //console.log("roc");
                 // square_test(parseInt(slider_text.textContent));
                 operator_entry_mode = true;
+                if(screen_text.textContent == '0') {
+                    screen_text.textContent = "1";
+                } else {
                 screen_text.textContent = screen_text.textContent + "2";
+                }
         });
 
         add_button.addEventListener("click", function(e) {
                 e.preventDefault();
                 //e.stopPropagation();
                 e.stopImmediatePropagation();
+                
                 //console.log("roc");
                 // square_test(parseInt(slider_text.textContent));
                if(operator_entry_mode) {
+                   
                    if(Object.keys(math_statement).length < 1) {
-                        math_statement['num1'] = parseFloat(screen_text.textContent);
+                        console.log("plus") 
+                        math_statement['num1'] = screen_text.textContent;
                         math_statement['op'] = "+"; 
+                        math_statement_list.push(screen_text.textContent);
+                        math_statement_list.push(" + ")
+                        
+                        console.log("+++")
+                       
                         screen_text.textContent = screen_text.textContent + " + ";            
+                        console.log(math_statement_list);
                    } else {
                         let temp_list = screen_text.textContent.split(' ')
                         console.log(temp_list);
-                        math_statement['num2'] = parseFloat(temp_list[2]);
+                        console.log("***")
+                        math_statement['num2'] = temp_list[2];
 
-                        math_statement['num1'] = operations['add'](math_statement['num1'], math_statement['num2'])
-                        math_statement['op'] = "+"; 
+                        math_statement['num1'] = operations['add'](parseFloat(math_statement['num1']), parseFloat(math_statement['num2']));
+                        math_statement['op'] = "+";
+                        
+                        math_statement_list[0] = operations['add'](parseFloat(math_statement_list[0]), parseFloat(temp_list[2]));
+                        math_statement_list[1] ="+";
+                        
+                        
                         screen_text.textContent = String(math_statement['num1']) + " + ";
                         math_statement['num2'] = 0;
+                        console.log(math_statement_list);
+                        
                     }
                 }
                operator_entry_mode = false;

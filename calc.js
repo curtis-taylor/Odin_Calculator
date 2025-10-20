@@ -30,6 +30,6 @@ const operation = 'add';
 const result = operations[operation](5, 3);
 console.log(result); // Output: 8
 
-function write(calc_text, calc_char) {
+function write(mode_state, calc_text, calc_char) {
     
 }
