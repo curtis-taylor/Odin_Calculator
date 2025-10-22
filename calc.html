@@ -152,7 +152,7 @@
                     }
                 }
                
-               // let mode_state_machine = {num1:true, operator:false, num2:false, num1_decimal_used:false, num2_decimal_used:false};
+               
                
 
         });
@@ -163,9 +163,12 @@
                 e.stopImmediatePropagation();
                 //console.log("roc");
                 // square_test(parseInt(slider_text.textContent));
-                if(operator_entry_mode) {
-                   screen_text.textContent = write_number(screen_text.textContent, " - "); 
-                  
+                if(mode_state_machine.operator_can_be_entered) {
+                   // screen_text.textContent = write_number(screen_text.textContent, " - "); 
+                   let op_list = op_processor(mode_state_machine, math_statement, screen_text.textContent, "-", "minus" )
+                   screen_text.textContent = op_list[2];
+                   mode_state_machine = op_list[0];
+                   math_statement = op_list[1];  
                 }
                 operator_entry_mode = false;
         });

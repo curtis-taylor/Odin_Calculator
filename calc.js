@@ -21,7 +21,7 @@ function operate(op, a, b) {
 
 const operations = {
     add: (a, b) => a + b,
-    subtract: (a, b) => a - b,
+    minus: (a, b) => a - b,
     multiply: (a, b) => a * b,
     divide: (a,b) => a / b
 };
@@ -40,36 +40,42 @@ function write_number(original_text, num_ch) {
     return original_text
 }
 
-function op_processor(mode_state, math_statement, operator_char) {
+function op_processor(mode_state, math_statement_obj, text, operator_char, operation) {
 
 
-    if(Object.keys(math_statement).length < 1) {
+    if(Object.keys(math_statement_obj).length < 1) {
                 console.log("plus") 
-                math_statement['num1'] = screen_text.textContent;
-                math_statement['operator'] = "+"; 
+                math_statement_obj['num1'] = text;
+                math_statement_obj['operator'] = operator_char; 
                 // math_statement_list.push(screen_text.textContent);
                 // math_statement_list.push(" + ")
                 
                 console.log("+++")
+
+                 
                 
-                screen_text.textContent = screen_text.textContent + " + ";            
+                text = text + " " + operator_char + " " ;            
             
     } else {
-        let temp_list = screen_text.textContent.split(' ')
-        console.log(temp_list);
+        let temp_list = text.split(' ')
+        console.log(text);
         console.log("***")
-        math_statement['num2'] = temp_list[2];
+        math_statement_obj['num2'] = temp_list[2];
 
-        math_statement['num1'] = operations['add'](parseFloat(math_statement['num1']), parseFloat(math_statement['num2']));
-        math_statement['operator'] = operator_char;
-        
+        math_statement_obj['num1'] = operations['add'](parseFloat(math_statement_obj['num1']), parseFloat(math_statement_obj['num2']));
+        math_statement_obj['operator'] = operator_char;
+        mode_state.operator_can_be_entered = false;
+
+        // let mode_state_machine = {num1:true, operator_can_be_entered:false, num2:false, num1_decimal_used:false, num2_decimal_used:false};
         //math_statement_list[0] = operations['add'](parseFloat(math_statement_list[0]), parseFloat(temp_list[2]));
         // math_statement_list[1] ="+";
         
         
-        screen_text.textContent = String(math_statement['num1']) + " + ";
-        delete math_statement.num2;
+        text = String(math_statement_obj['num1']) + " + ";
+        delete math_statement_obj.num2;
         //console.log(math_statement_list);
                 
     }
+
+    return [mode_state, math_statement_obj, text]
 }
