@@ -40,13 +40,13 @@ function write_number(original_text, num_ch) {
     return original_text
 }
 
-function processor(mode_state, math_statement, calc_char) {
+function op_processor(mode_state, math_statement, operator_char) {
 
 
     if(Object.keys(math_statement).length < 1) {
                 console.log("plus") 
                 math_statement['num1'] = screen_text.textContent;
-                math_statement['operator'] = " + "; 
+                math_statement['operator'] = "+"; 
                 // math_statement_list.push(screen_text.textContent);
                 // math_statement_list.push(" + ")
                 
@@ -61,15 +61,15 @@ function processor(mode_state, math_statement, calc_char) {
         math_statement['num2'] = temp_list[2];
 
         math_statement['num1'] = operations['add'](parseFloat(math_statement['num1']), parseFloat(math_statement['num2']));
-        math_statement['op'] = "+";
+        math_statement['operator'] = operator_char;
         
         //math_statement_list[0] = operations['add'](parseFloat(math_statement_list[0]), parseFloat(temp_list[2]));
         // math_statement_list[1] ="+";
         
         
         screen_text.textContent = String(math_statement['num1']) + " + ";
-        math_statement['num2'] = 0;
-        console.log(math_statement_list);
+        delete math_statement.num2;
+        //console.log(math_statement_list);
                 
     }
 }
