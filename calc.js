@@ -41,16 +41,18 @@ function write_number(original_text, num_ch) {
 }
 
 function op_processor(mode_state, math_statement_obj, text, operator_char, operation) {
-
+    console.log(math_statement_obj)
 
     if(Object.keys(math_statement_obj).length < 1) {
-                console.log("plus") 
                 math_statement_obj['num1'] = text;
                 math_statement_obj['operator'] = operator_char; 
+                math_statement_obj['operation'] = 'add';
+
+                mode_state.operator_can_be_entered = false;
                 // math_statement_list.push(screen_text.textContent);
                 // math_statement_list.push(" + ")
                 
-                console.log("+++")
+                
 
                  
                 
@@ -59,10 +61,11 @@ function op_processor(mode_state, math_statement_obj, text, operator_char, opera
     } else {
         let temp_list = text.split(' ')
         console.log(text);
+         console.log(math_statement_obj)
         console.log("***")
         math_statement_obj['num2'] = temp_list[2];
 
-        math_statement_obj['num1'] = operations['add'](parseFloat(math_statement_obj['num1']), parseFloat(math_statement_obj['num2']));
+        math_statement_obj['num1'] = operations[operation](parseFloat(math_statement_obj['num1']), parseFloat(math_statement_obj['num2']));
         math_statement_obj['operator'] = operator_char;
         mode_state.operator_can_be_entered = false;
 
@@ -71,9 +74,11 @@ function op_processor(mode_state, math_statement_obj, text, operator_char, opera
         // math_statement_list[1] ="+";
         
         
-        text = String(math_statement_obj['num1']) + " + ";
+        text = String(math_statement_obj['num1']) + " " + operator_char + " ";
         delete math_statement_obj.num2;
         //console.log(math_statement_list);
+
+       
                 
     }
 

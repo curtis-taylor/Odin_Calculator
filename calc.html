@@ -61,7 +61,7 @@
         const equal_button = document.querySelector('#equal');
         const clear_button = document.querySelector('#clear');
 
-        let math_statement = {};
+        let math_statement = {operation:''};
         let math_statement_list = [];
         let mode_state_machine = {num1:true, operator_can_be_entered:false, num2:false, num1_decimal_used:false, num2_decimal_used:false};
         let operator_entry_mode = false;
@@ -110,14 +110,14 @@
                 //e.stopPropagation();
                 e.stopImmediatePropagation();
                 
-                
                 // square_test(parseInt(slider_text.textContent));
                if(operator_entry_mode) {
                    console.log("roqqq " + Object.keys(math_statement).length );
-                   if(Object.keys(math_statement).length < 1) {
+                   if(Object.keys(math_statement).length < 2) {
                         console.log("plus") 
                         math_statement['num1'] = screen_text.textContent;
                         math_statement['operator'] = "+"; 
+                        math_statement['operation'] = 'add';
 
                         operator_entry_mode = false;
                         mode_state_machine.num1 = true;
@@ -136,7 +136,7 @@
                         console.log("***")
                         math_statement['num2'] = temp_list[2];
 
-                        math_statement['num1'] = operations['add'](parseFloat(math_statement['num1']), parseFloat(math_statement['num2']));
+                        math_statement['num1'] = operations[math_statement.operation](parseFloat(math_statement['num1']), parseFloat(math_statement['num2']));
                         math_statement['operator'] = "+";
                         operator_entry_mode = false;
                         
@@ -179,8 +179,12 @@
                 e.stopImmediatePropagation();
                 //console.log("roc");
                 // square_test(parseInt(slider_text.textContent));
-                if(operator_entry_mode) {
-                   screen_text.textContent = screen_text.textContent + " x "; 
+                 if(mode_state_machine.operator_can_be_entered) {
+                   // screen_text.textContent = write_number(screen_text.textContent, " - "); 
+                   let op_list = op_processor(mode_state_machine, math_statement, screen_text.textContent, "x", "multiply" )
+                   screen_text.textContent = op_list[2];
+                   mode_state_machine = op_list[0];
+                   math_statement = op_list[1];  
                 }
                 operator_entry_mode = false;
         });
