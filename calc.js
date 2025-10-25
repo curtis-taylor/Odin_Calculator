@@ -46,7 +46,7 @@ function op_processor(mode_state, math_statement_obj, text, operator_char, opera
     if(Object.keys(math_statement_obj).length < 1) {
                 math_statement_obj['num1'] = text;
                 math_statement_obj['operator'] = operator_char; 
-                math_statement_obj['operation'] = 'add';
+                math_statement_obj['operation'] = operation;
 
                 mode_state.operator_can_be_entered = false;
                 // math_statement_list.push(screen_text.textContent);
@@ -60,13 +60,16 @@ function op_processor(mode_state, math_statement_obj, text, operator_char, opera
             
     } else {
         let temp_list = text.split(' ')
+
+
         console.log(text);
          console.log(math_statement_obj)
-        console.log("***")
+        console.log("***  " + math_statement_obj.operation)
         math_statement_obj['num2'] = temp_list[2];
 
-        math_statement_obj['num1'] = operations[operation](parseFloat(math_statement_obj['num1']), parseFloat(math_statement_obj['num2']));
+        math_statement_obj['num1'] = operations[math_statement_obj.operation](parseFloat(math_statement_obj['num1']), parseFloat(math_statement_obj['num2']));
         math_statement_obj['operator'] = operator_char;
+        math_statement_obj['operation'] = operation
         mode_state.operator_can_be_entered = false;
 
         // let mode_state_machine = {num1:true, operator_can_be_entered:false, num2:false, num1_decimal_used:false, num2_decimal_used:false};
