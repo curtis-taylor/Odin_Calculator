@@ -111,7 +111,17 @@
                 e.stopImmediatePropagation();
                 
                 // square_test(parseInt(slider_text.textContent));
-               if(operator_entry_mode) {
+                if(mode_state_machine.operator_can_be_entered) {
+                   // screen_text.textContent = write_number(screen_text.textContent, " - "); 
+                   let op_list = op_processor(mode_state_machine, math_statement, screen_text.textContent, "+", "add" )
+                   screen_text.textContent = op_list[2];
+                   mode_state_machine = op_list[0];
+                   math_statement = op_list[1];  
+                }
+                operator_entry_mode = false;              
+              
+                /*
+                if(operator_entry_mode) {
                    console.log("roqqq " + Object.keys(math_statement).length );
                    if(Object.keys(math_statement).length < 2) {
                         console.log("plus") 
@@ -153,7 +163,7 @@
                     }
                 }
                
-               
+               */
                
 
         });
@@ -182,6 +192,8 @@
                 // square_test(parseInt(slider_text.textContent));
                  if(mode_state_machine.operator_can_be_entered) {
                    // screen_text.textContent = write_number(screen_text.textContent, " - "); 
+                   console.dir(" x button " + Object.keys(math_statement).length)
+                   
                    let op_list = op_processor(mode_state_machine, math_statement, screen_text.textContent, "x", "multiply" )
                    screen_text.textContent = op_list[2];
                    mode_state_machine = op_list[0];
@@ -196,8 +208,20 @@
                 e.stopImmediatePropagation();
                 //console.log("roc");
                 // square_test(parseInt(slider_text.textContent));
-                if(operator_entry_mode) {
+             
+                /* if(operator_entry_mode) {
                    screen_text.textContent = screen_text.textContent + " " + "\u00F7" + " ";
+                }
+                operator_entry_mode = false; */
+
+                if(mode_state_machine.operator_can_be_entered) {
+                   // screen_text.textContent = write_number(screen_text.textContent, " - "); 
+                   console.dir(" x button " + Object.keys(math_statement).length)
+                   
+                   let op_list = op_processor(mode_state_machine, math_statement, screen_text.textContent, "\u00F7", "divide" )
+                   screen_text.textContent = op_list[2];
+                   mode_state_machine = op_list[0];
+                   math_statement = op_list[1];  
                 }
                 operator_entry_mode = false;
         })

@@ -41,9 +41,10 @@ function write_number(original_text, num_ch) {
 }
 
 function op_processor(mode_state, math_statement_obj, text, operator_char, operation) {
-    console.log(math_statement_obj)
+    console.log("xxxxxx  " + math_statement_obj.length)
 
-    if(Object.keys(math_statement_obj).length < 1) {
+    if(Object.keys(math_statement_obj).length < 2) {
+                console.log("lennkdjskdjskdjsk");
                 math_statement_obj['num1'] = text;
                 math_statement_obj['operator'] = operator_char; 
                 math_statement_obj['operation'] = operation;
@@ -52,8 +53,6 @@ function op_processor(mode_state, math_statement_obj, text, operator_char, opera
                 // math_statement_list.push(screen_text.textContent);
                 // math_statement_list.push(" + ")
                 
-                
-
                  
                 
                 text = text + " " + operator_char + " " ;            
