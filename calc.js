@@ -40,6 +40,8 @@ function write_number(original_text, num_ch) {
     return original_text
 }
 
+
+
 function op_processor(mode_state, math_statement_obj, text, operator_char, operation) {
     console.log("xxxxxx  " + math_statement_obj.length)
 
@@ -70,6 +72,7 @@ function op_processor(mode_state, math_statement_obj, text, operator_char, opera
         math_statement_obj['operator'] = operator_char;
         math_statement_obj['operation'] = operation
         mode_state.operator_can_be_entered = false;
+        mode_state.num1 = false;
 
         // let mode_state_machine = {num1:true, operator_can_be_entered:false, num2:false, num1_decimal_used:false, num2_decimal_used:false};
         //math_statement_list[0] = operations['add'](parseFloat(math_statement_list[0]), parseFloat(temp_list[2]));
