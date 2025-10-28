@@ -30,11 +30,14 @@ const operation = 'add';
 const result = operations[operation](5, 3);
 console.log(result); // Output: 8
 
-function write_number(original_text, num_ch) {
-    if(original_text == '0') {
+function write_char(original_text, num_ch) {
+    if(num_ch == '.') {
+        original_text = original_text + num_ch
+    }
+    else if(original_text == '0') {
             original_text = num_ch;
     } else {
-    original_text = original_text + num_ch;
+        original_text = original_text + num_ch;
     }
 
     return original_text
@@ -43,11 +46,11 @@ function write_number(original_text, num_ch) {
 
 
 function op_processor(mode_state, math_statement_obj, text, operator_char, operation) {
-    console.log("xxxxxx  " + math_statement_obj.length)
+    console.log("xxxxxx  " + math_statement_obj)
 
-    if(Object.keys(math_statement_obj).length < 2) {
+    if(Object.keys(math_statement_obj).length < 3) {
                 console.log("lennkdjskdjskdjsk");
-                math_statement_obj['num1'] = text;
+                //math_statement_obj['num1'] = text;
                 math_statement_obj['operator'] = operator_char; 
                 math_statement_obj['operation'] = operation;
 
@@ -66,7 +69,7 @@ function op_processor(mode_state, math_statement_obj, text, operator_char, opera
         console.log(text);
          console.log(math_statement_obj)
         console.log("***  " + math_statement_obj.operation)
-        math_statement_obj['num2'] = temp_list[2];
+        //math_statement_obj['num2'] = temp_list[2];
 
         math_statement_obj['num1'] = operations[math_statement_obj.operation](parseFloat(math_statement_obj['num1']), parseFloat(math_statement_obj['num2']));
         math_statement_obj['operator'] = operator_char;
