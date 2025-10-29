@@ -67,7 +67,7 @@ function op_processor(mode_state, math_statement_obj, text, operator_char, opera
 
 
         console.log(text);
-         console.log(math_statement_obj)
+        console.log(math_statement_obj)
         console.log("***  " + math_statement_obj.operation)
         //math_statement_obj['num2'] = temp_list[2];
 

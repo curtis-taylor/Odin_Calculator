@@ -269,24 +269,40 @@
                 console.log("roc");
                 // square_test(parseInt(slider_text.textContent));
 
-                if(math_statement['num1']) {
+                if((math_statement['operator']) && (math_statement['num2'])) {
                     console.log("decimal insert into num2")
-                } else {
+                    console.log("1st ")
+                    if(!(math_statement['num2']).includes('.')) {
+                        screen_text.textContent = write_char(screen_text.textContent, ".");
+                        let temp = screen_text.textContent.split(" ");
+                        math_statement.num2 = temp[2];
+                    }
+                    
+                } 
+                else if(!(math_statement['num1']).includes('.')) {
+                   // if(!(math_statement['num2']).includes('.')) { }
+                    screen_text.textContent = write_char(screen_text.textContent, ".");
+                     math_statement.num1 = screen_text.textContent;
+                    
+
+                    console.log("2nd ")
+                }
+                else {
+
                     console.log("decimal insert into num1")
                 }
 
-                mode_state_machine.operator_can_be_entered = true;
+                
 
-                screen_text.textContent = "";
+                //  let mode_state_machine = {num1:true, operator_can_be_entered:false, num2:false, num1_decimal_used:false, num2_decimal_used:false};
+                // mode_state_machine.operator_can_be_entered = true;
 
-                math_statement = {operation:''};
-                mode_state_machine = {num1:true, operator_can_be_entered:false, num2:false, num1_decimal_used:false, num2_decimal_used:false};
+                //screen_text.textContent = "";
+
+                //math_statement = {operation:''};
+               // mode_state_machine = {num1:true, operator_can_be_entered:false, num2:false, num1_decimal_used:false, num2_decimal_used:false};
                 //operator_entry_mode = false;
                 //operator_entry_mode = false;
-
-                if(mode_state_machine) {
-
-                }
 
                 
         });
