@@ -61,7 +61,7 @@
         const equal_button = document.querySelector('#equal');
         const clear_button = document.querySelector('#clear');
 
-        let math_statement = {operation:''};
+        let math_statement = {num1:'0', operation:''};
         let math_statement_list = [];
         let mode_state_machine = {num1:true, operator_can_be_entered:false, num2:false, num1_decimal_used:false, num2_decimal_used:false};
         let operator_entry_mode = false;
@@ -106,6 +106,35 @@
                 if(math_statement.operator) {
                     let temp = screen_text.textContent.split(" ");
                     math_statement.num2 = temp[2];
+                    console.log("num2 button one " + math_statement.num1 + " " + math_statement.num2);
+                } else {
+                    math_statement.num1 = screen_text.textContent;
+                    console.log("num1 button one " + math_statement.num1);
+                }
+
+                /*
+                if(screen_text.textContent == '0') {
+                    screen_text.textContent = "1";
+                } else {
+                screen_text.textContent = screen_text.textContent + "2";
+                } */
+        });
+
+        button0.addEventListener("click", function(e) {
+                e.preventDefault();
+                //e.stopPropagation();
+                e.stopImmediatePropagation();
+                console.log("roc");
+                // square_test(parseInt(slider_text.textContent));
+                operator_entry_mode = true;
+                mode_state_machine.operator_can_be_entered = true;
+    
+
+                if(math_statement.operator) {
+
+                    let temp = screen_text.textContent.split(" ");
+                    math_statement.num2 = temp[2];
+                    screen_text.textContent = write_char(screen_text.textContent, "0")
                     console.log("num2 button one " + math_statement.num1 + " " + math_statement.num2);
                 } else {
                     math_statement.num1 = screen_text.textContent;
@@ -252,9 +281,9 @@
                 operator_entry_mode = true;
                 mode_state_machine.operator_can_be_entered = true;
 
-                screen_text.textContent = "";
+                screen_text.textContent = "0";
 
-                math_statement = {operation:''};
+                math_statement = {num1:'0', operation:''};
                 mode_state_machine = {num1:true, operator_can_be_entered:false, num2:false, num1_decimal_used:false, num2_decimal_used:false};
                 //operator_entry_mode = false;
                 //operator_entry_mode = false;
@@ -273,12 +302,21 @@
                     console.log("decimal insert into num2")
                     console.log("1st ")
                     if(!(math_statement['num2']).includes('.')) {
+    
                         screen_text.textContent = write_char(screen_text.textContent, ".");
                         let temp = screen_text.textContent.split(" ");
                         math_statement.num2 = temp[2];
                     }
                     
                 } 
+                else if((math_statement['operator'])) {
+                    console.log("decimal first char for num2");
+
+                    screen_text.textContent = screen_text.textContent + "0.";
+                    
+                    math_statement.num2 = "0.";
+
+                }
                 else if(!(math_statement['num1']).includes('.')) {
                    // if(!(math_statement['num2']).includes('.')) { }
                     screen_text.textContent = write_char(screen_text.textContent, ".");
