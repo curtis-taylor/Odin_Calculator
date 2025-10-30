@@ -48,7 +48,7 @@ function write_char(original_text, num_ch) {
 function op_processor(mode_state, math_statement_obj, text, operator_char, operation) {
     console.log("xxxxxx  " + math_statement_obj)
 
-    if(Object.keys(math_statement_obj).length < 3) {
+    if(math_statement_obj.operator == '') {
                 console.log("lennkdjskdjskdjsk");
                 //math_statement_obj['num1'] = text;
                 math_statement_obj['operator'] = operator_char; 
