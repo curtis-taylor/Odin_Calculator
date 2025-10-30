@@ -130,14 +130,18 @@
                 mode_state_machine.operator_can_be_entered = true;
     
 
-                if(math_statement.operator != 0) {
+                if(math_statement.operator != '') {
 
                     let temp = screen_text.textContent.split(" ");
                     math_statement.num2 = temp[2];
-                    screen_text.textContent = write_char(screen_text.textContent, "0")
                     console.log("num2 button one " + math_statement.num1 + " " + math_statement.num2);
+                    math_statement = write_char(math_statement.num2, "0")
+                    temp[2] = math_statement.num2;
+                    screen_text.textContent = temp.join('');
+                    
                 } else {
                     math_statement.num1 = screen_text.textContent;
+                    write_char(math_statement.num1, "0")
                     console.log("num1 button one " + math_statement.num1);
                 }
 

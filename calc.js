@@ -35,7 +35,8 @@ function write_char(original_text, num_ch) {
         original_text = original_text + num_ch
     }
     else if(original_text == '0') {
-            original_text = num_ch;
+        if(num_ch != '0') {
+            original_text = num_ch; }
     } else {
         original_text = original_text + num_ch;
     }
