@@ -98,7 +98,7 @@
                 e.stopImmediatePropagation();
                 console.log("roc");
                 // square_test(parseInt(slider_text.textContent));
-                operator_entry_mode = true;
+                // operator_entry_mode = true;
                 mode_state_machine.operator_can_be_entered = true;
 
                 screen_text.textContent = write_char(screen_text.textContent, "2")
@@ -106,10 +106,10 @@
                 if(math_statement.operator != '') {
                     let temp = screen_text.textContent.split(" ");
                     math_statement.num2 = temp[2];
-                    console.log("num2 button one " + math_statement.num1 + " " + math_statement.num2);
+                   // console.log("num2 button one " + math_statement.num1 + " " + math_statement.num2);
                 } else {
                     math_statement.num1 = screen_text.textContent;
-                    console.log("num1 button one " + math_statement.num1);
+                   // console.log("num1 button one " + math_statement.num1);
                 }
 
                 /*
@@ -120,12 +120,32 @@
                 } */
         });
 
+        button3.addEventListener("click", function(e) {
+                e.preventDefault();
+                //e.stopPropagation();
+                e.stopImmediatePropagation();
+              
+                mode_state_machine.operator_can_be_entered = true;
+
+                screen_text.textContent = write_char(screen_text.textContent, "3")
+
+                if(math_statement.operator != '') {
+                    let temp = screen_text.textContent.split(" ");
+                    math_statement.num2 = temp[2];
+                   
+                } else {
+                    math_statement.num1 = screen_text.textContent;
+                   
+                }
+
+        });
+
         button0.addEventListener("click", function(e) {
                 e.preventDefault();
                 //e.stopPropagation();
                 e.stopImmediatePropagation();
                 console.log("roc");
-                // square_test(parseInt(slider_text.textContent));
+                
                 operator_entry_mode = true;
                 mode_state_machine.operator_can_be_entered = true;
     
@@ -135,13 +155,16 @@
                     let temp = screen_text.textContent.split(" ");
                     math_statement.num2 = temp[2];
                     console.log("num2 button one " + math_statement.num1 + " " + math_statement.num2);
-                    math_statement = write_char(math_statement.num2, "0")
+                    math_statement.num2 = write_char(math_statement.num2, "0")
                     temp[2] = math_statement.num2;
-                    screen_text.textContent = temp.join('');
+                    screen_text.textContent = temp.join(' ');
+
                     
                 } else {
                     math_statement.num1 = screen_text.textContent;
-                    write_char(math_statement.num1, "0")
+                    // console.log("_____" + math_statement.num1)
+                    math_statement.num1 = write_char(math_statement.num1, "0")
+                    screen_text.textContent = math_statement.num1;
                     console.log("num1 button one " + math_statement.num1);
                 }
 

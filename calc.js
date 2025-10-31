@@ -31,14 +31,17 @@ const result = operations[operation](5, 3);
 console.log(result); // Output: 8
 
 function write_char(original_text, num_ch) {
+
     if(num_ch == '.') {
         original_text = original_text + num_ch
     }
     else if(original_text == '0') {
-        if(num_ch != '0') {
-            original_text = num_ch; }
+            original_text = num_ch; 
+
+            console.log("zero suppose to returned")
     } else {
         original_text = original_text + num_ch;
+        console.log(" original text  " + original_text);
     }
 
     return original_text
