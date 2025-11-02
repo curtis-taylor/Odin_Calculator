@@ -76,18 +76,36 @@
                 //console.log("roc");
                 // square_test(parseInt(slider_text.textContent));
                 console.log("roc1");
+                console.log(screen_text.textContent != "0");
 
                 let temp = [math_statement.num1, math_statement.operator, math_statement.num2]
 
                 if(screen_text.textContent != "0") {
-                    if(math_statement.num2.length > 0){
+                    if(math_statement.num2.length > 0 ){
                         math_statement.num2 = math_statement.num2.slice(0, -1);
+                        
+                        if(math_statement.num2.length > 0) {
+                            screen_text.textContent = math_statement.num1 + " " + math_statement.operator + " " + math_statement.num2;
+                        } else {
+                            screen_text.textContent = math_statement.num1 + " " + math_statement.operator + " ";
+                        }
+
                     } else if(math_statement.operator.length > 0) {
-                        math_statement.operator = math_statement.operator.slice(0, -1);
+                        math_statement.operator = "";
+                        mode_state_machine.operator_can_be_entered = true;
+                        screen_text.textContent = math_statement.num1;
+
                     } else {
+                        console.log("else")
                         if(math_statement.num1.length > 0) {
                             math_statement.num1 = math_statement.num1.slice(0, -1);
+                            screen_text.textContent = math_statement.num1;
                         } 
+
+                        if(math_statement.num1.length == 0) {
+                            math_statement.num1 = '0';
+                            screen_text.textContent = '0';
+                        }
 
 
                     }
@@ -254,6 +272,8 @@
 
                    
                 }
+
+                console.log("add " + math_statement.num2)
                 operator_entry_mode = false;              
               
                 /*
