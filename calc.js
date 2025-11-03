@@ -87,7 +87,8 @@ function op_processor(mode_state, math_statement_obj, text, operator_char, opera
         
         
         text = String(math_statement_obj['num1']) + " " + operator_char + " ";
-        delete math_statement_obj.num2;
+         math_statement_obj.num2 = "";
+        //delete math_statement_obj.num2;
         //console.log(math_statement_list);
 
        
