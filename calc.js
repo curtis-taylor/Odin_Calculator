@@ -70,8 +70,9 @@ function number_processor(operator_value, screen_text, num_ch) {
         console.log("num1 button one " + return_obj.num1);
     }
 
+    console.log(" obj " + return_obj.text);
     
-    return return_obj;
+    return [return_obj.text, return_obj.num1, return_obj.num2];
 
 }
 

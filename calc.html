@@ -170,10 +170,11 @@
                 // operator_entry_mode = true;
                 mode_state_machine.operator_can_be_entered = true;
 
-                let temp_obj = number_processor( math_statement.operator, screen_text.textContent, "2");
-                screen_text.textContent = temp_obj.screen_text;
-                math_statement.num1 = temp_obj.num1;
-                math_statement.num2 = temp_obj.num2;
+                let temp_list = number_processor( math_statement.operator, screen_text.textContent, "2");
+                screen_text.textContent = temp_list[0];
+                console.log(temp_list[0] + " HH");
+                math_statement.num1 = temp_list[1];
+                math_statement.num2 = temp_list[2];
 
                 /*
                 screen_text.textContent = write_char(screen_text.textContent, "2")
