@@ -135,23 +135,27 @@
                 e.stopImmediatePropagation();
                 //console.log("roc");
                 // square_test(parseInt(slider_text.textContent));
-                console.log("roc1");
+                console.log("roc1 " + (math_statement.num2 != '0'));
                 operator_entry_mode = true;
                 mode_state_machine.num1 = false;
                 mode_state_machine.operator_can_be_entered = true;
 
-                screen_text.textContent = write_char(screen_text.textContent, "1")
+                //screen_text.textContent = write_char(screen_text.textContent, "1")
                 
 
                 if(math_statement.operator != '') {
                     let temp = screen_text.textContent.split(" ");
                     math_statement.num2 = temp[2];
-                    console.log("num2 button one " + math_statement.num1 + " " + math_statement.num2);
-                    if(math_statement.num2 != 0) {
-                        
-                    }
+                
+                    console.log("num2 button one " + math_statement.num1 + " " + math_statement.operator + " " + math_statement.num2);
+                    if(math_statement.num2 != '0') {
+                        console.log("11%% " + math_statement.operator);
+                        math_statement.num2 = write_char(math_statement.num2, "1")
+                        screen_text.textContent = math_statement.num1 + " " + math_statement.operator + " " + math_statement.num2;
+                    } 
                 } else {
-                    math_statement.num1 = screen_text.textContent;
+                    math_statement.num1 = write_char(screen_text.textContent, "1")
+                    screen_text.textContent = math_statement.num1;
                     console.log("num1 button one " + math_statement.num1);
                 }
                
@@ -166,6 +170,12 @@
                 // operator_entry_mode = true;
                 mode_state_machine.operator_can_be_entered = true;
 
+                let temp_obj = number_processor( math_statement.operator, screen_text.textContent, "2");
+                screen_text.textContent = temp_obj.screen_text;
+                math_statement.num1 = temp_obj.num1;
+                math_statement.num2 = temp_obj.num2;
+
+                /*
                 screen_text.textContent = write_char(screen_text.textContent, "2")
 
                 if(math_statement.operator != '') {
@@ -175,7 +185,7 @@
                 } else {
                     math_statement.num1 = screen_text.textContent;
                    // console.log("num1 button one " + math_statement.num1);
-                }
+                } */
 
                 /*
                 if(screen_text.textContent == '0') {

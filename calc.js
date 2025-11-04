@@ -33,12 +33,14 @@ console.log(result); // Output: 8
 function write_char(original_text, num_ch) {
 
     if(num_ch == '.') {
-        original_text = original_text + num_ch
+        if(!(original_text.includes('.'))) {
+        original_text = original_text + num_ch;
+        }
     }
     else if(original_text == '0') {
             original_text = num_ch; 
 
-            console.log("zero suppose to returned")
+            console.log("zero suppose to returned " + original_text)
     } else {
         original_text = original_text + num_ch;
         console.log(" original text  " + original_text);
@@ -47,6 +49,31 @@ function write_char(original_text, num_ch) {
     return original_text
 }
 
+function number_processor(operator_value, screen_text, num_ch) {
+
+    let return_obj = {num1:'', num2:'', oper: operator_value, text: screen_text };
+
+    if(operator_value != '') {
+        let temp = return_obj.text.split(" ");
+        return_obj.num1 = temp[0];
+        return_obj.num2 = temp[2];
+    
+        console.log("num2 button one " + return_obj.num1 + " " + operator_value + " " + return_obj.num2);
+        if(return_obj.num2 != '0') {
+            console.log("11%% " + operator_value);
+            return_obj.num2 = write_char(return_obj.num2, num_ch);
+            return_obj.text = return_obj.num1 + " " + return_obj.operator + " " + return_obj.num2;
+        } 
+    } else {
+        return_obj.num1 = write_char(return_obj.text, num_ch)
+        return_obj.text = return_obj.num1;
+        console.log("num1 button one " + return_obj.num1);
+    }
+
+    
+    return return_obj;
+
+}
 
 
 function op_processor(mode_state, math_statement_obj, text, operator_char, operation) {
