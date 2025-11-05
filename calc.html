@@ -68,6 +68,11 @@
         let operator_entry_mode = false;
         let decimal_not_used = false;
 
+        function control_text_property(text) {
+            if(text.length < 15) {
+                document.documentElement.style.setProperty("--primary-color", "purple");
+            }
+        }
         
         back_button.addEventListener("click", function(e) {
                 e.preventDefault();
@@ -203,8 +208,14 @@
               
                 mode_state_machine.operator_can_be_entered = true;
 
-                screen_text.textContent = write_char(screen_text.textContent, "3")
 
+                let temp_list = number_processor( math_statement.operator, screen_text.textContent, "3");
+                screen_text.textContent = temp_list[0];
+                console.log(temp_list[0] + " HH");
+                math_statement.num1 = temp_list[1];
+                math_statement.num2 = temp_list[2];
+
+                /*
                 if(math_statement.operator != '') {
                     let temp = screen_text.textContent.split(" ");
                     math_statement.num2 = temp[2];
@@ -212,7 +223,7 @@
                 } else {
                     math_statement.num1 = screen_text.textContent;
                    
-                }
+                } */
 
         });
 
@@ -223,18 +234,82 @@
               
                 mode_state_machine.operator_can_be_entered = true;
 
-                screen_text.textContent = write_char(screen_text.textContent, "4")
-
-                if(math_statement.operator != '') {
-                    let temp = screen_text.textContent.split(" ");
-                    math_statement.num2 = temp[2];
-                   
-                } else {
-                    math_statement.num1 = screen_text.textContent;
-                   
-                }
-
+                let temp_list = number_processor( math_statement.operator, screen_text.textContent, "4");
+                screen_text.textContent = temp_list[0];
+                console.log(temp_list[0] + " HH");
+                math_statement.num1 = temp_list[1];
+                math_statement.num2 = temp_list[2];
         });
+
+        button5.addEventListener("click", function(e) {
+                e.preventDefault();
+                //e.stopPropagation();
+                e.stopImmediatePropagation();
+              
+                mode_state_machine.operator_can_be_entered = true;
+
+                let temp_list = number_processor( math_statement.operator, screen_text.textContent, "5");
+                screen_text.textContent = temp_list[0];
+                console.log(temp_list[0] + " HH");
+                math_statement.num1 = temp_list[1];
+                math_statement.num2 = temp_list[2];
+        });
+
+        button6.addEventListener("click", function(e) {
+                e.preventDefault();
+                //e.stopPropagation();
+                e.stopImmediatePropagation();
+              
+                mode_state_machine.operator_can_be_entered = true;
+
+                let temp_list = number_processor( math_statement.operator, screen_text.textContent, "6");
+                screen_text.textContent = temp_list[0];
+                console.log(temp_list[0] + " HH");
+                math_statement.num1 = temp_list[1];
+                math_statement.num2 = temp_list[2];
+        });
+
+        button7.addEventListener("click", function(e) {
+                e.preventDefault();
+                //e.stopPropagation();
+                e.stopImmediatePropagation();
+              
+                mode_state_machine.operator_can_be_entered = true;
+
+                let temp_list = number_processor( math_statement.operator, screen_text.textContent, "7");
+                screen_text.textContent = temp_list[0];
+                console.log(temp_list[0] + " HH");
+                math_statement.num1 = temp_list[1];
+                math_statement.num2 = temp_list[2];
+        });
+
+        button8.addEventListener("click", function(e) {
+                e.preventDefault();
+                //e.stopPropagation();
+                e.stopImmediatePropagation();
+              
+                mode_state_machine.operator_can_be_entered = true;
+
+                let temp_list = number_processor( math_statement.operator, screen_text.textContent, "8");
+                screen_text.textContent = temp_list[0];
+                math_statement.num1 = temp_list[1];
+                math_statement.num2 = temp_list[2];
+        });
+
+        button9.addEventListener("click", function(e) {
+                e.preventDefault();
+                //e.stopPropagation();
+                e.stopImmediatePropagation();
+              
+                mode_state_machine.operator_can_be_entered = true;
+
+                let temp_list = number_processor( math_statement.operator, screen_text.textContent, "9");
+                screen_text.textContent = temp_list[0];
+                math_statement.num1 = temp_list[1];
+                math_statement.num2 = temp_list[2];
+        });
+
+        
 
         button0.addEventListener("click", function(e) {
                 e.preventDefault();
@@ -408,7 +483,7 @@
 
                 screen_text.textContent = "0";
 
-                math_statement = {num1:'0', operation:''};
+               math_statement = {num1:'0', num2:'', operator:'', operation:''};
                 mode_state_machine = {num1:true, operator_can_be_entered:false, num2:false, num1_decimal_used:false, num2_decimal_used:false};
                 //operator_entry_mode = false;
                 //operator_entry_mode = false;

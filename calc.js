@@ -49,9 +49,11 @@ function write_char(original_text, num_ch) {
     return original_text
 }
 
+
+
 function number_processor(operator_value, screen_text, num_ch) {
 
-    let return_obj = {num1:'', num2:'', oper: operator_value, text: screen_text };
+    let return_obj = {num1:'', num2:'', operator: operator_value, text: screen_text };
 
     if(operator_value != '') {
         let temp = return_obj.text.split(" ");
