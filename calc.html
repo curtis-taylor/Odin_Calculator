@@ -68,11 +68,7 @@
         let operator_entry_mode = false;
         let decimal_not_used = false;
 
-        function control_text_property(text) {
-            if(text.length < 15) {
-                document.documentElement.style.setProperty("--primary-color", "purple");
-            }
-        }
+        
         
         back_button.addEventListener("click", function(e) {
                 e.preventDefault();
@@ -131,6 +127,8 @@
                     math_statement.num1 = screen_text.textContent;
                     console.log("num1 button one " + math_statement.num1);
                 }
+
+                control_text_property(screen_text);
                
             });
 
@@ -155,12 +153,14 @@
                     console.log("num2 button one " + math_statement.num1 + " " + math_statement.operator + " " + math_statement.num2);
                     if(math_statement.num2 != '0') {
                         console.log("11%% " + math_statement.operator);
-                        math_statement.num2 = write_char(math_statement.num2, "1")
+                        math_statement.num2 = write_char(math_statement.num2, "1");
                         screen_text.textContent = math_statement.num1 + " " + math_statement.operator + " " + math_statement.num2;
+                        control_text_property(screen_text);
                     } 
                 } else {
-                    math_statement.num1 = write_char(screen_text.textContent, "1")
+                    math_statement.num1 = write_char(screen_text.textContent, "1");
                     screen_text.textContent = math_statement.num1;
+                    control_text_property(screen_text);
                     console.log("num1 button one " + math_statement.num1);
                 }
                
@@ -329,6 +329,7 @@
                     math_statement.num2 = write_char(math_statement.num2, "0")
                     temp[2] = math_statement.num2;
                     screen_text.textContent = temp.join(' ');
+                    control_text_property(screen_text);
 
                     
                 } else {
@@ -336,6 +337,7 @@
                     // console.log("_____" + math_statement.num1)
                     math_statement.num1 = write_char(math_statement.num1, "0")
                     screen_text.textContent = math_statement.num1;
+                    control_text_property(screen_text);
                     console.log("num1 button one " + math_statement.num1);
                 }
 
@@ -506,6 +508,7 @@
                         screen_text.textContent = write_char(screen_text.textContent, ".");
                         let temp = screen_text.textContent.split(" ");
                         math_statement.num2 = temp[2];
+                        control_text_property(screen_text);
                     }
                     
                 } 
@@ -520,8 +523,8 @@
                 else if(!(math_statement['num1']).includes('.')) {
                    // if(!(math_statement['num2']).includes('.')) { }
                     screen_text.textContent = write_char(screen_text.textContent, ".");
-                     math_statement.num1 = screen_text.textContent;
-                    
+                    math_statement.num1 = screen_text.textContent;
+                    control_text_property(screen_text);
 
                     console.log("2nd ")
                 }

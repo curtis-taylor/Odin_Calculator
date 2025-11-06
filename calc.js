@@ -26,9 +26,22 @@ const operations = {
     divide: (a,b) => a / b
 };
 
+
+
+
 const operation = 'add';
 const result = operations[operation](5, 3);
 console.log(result); // Output: 8
+
+function control_text_property(text_elem) {
+            console.log(text_elem.textContent.length + "  leng")
+            if(text_elem.length > 5) {
+                // document.documentElement.style.setProperty("--primary-color", "purple");
+                text_elem.style.setProperty('font-size', '10px');
+            } else {
+                text_elem.style.setProperty('font-size', '30px');
+            }
+}
 
 function write_char(original_text, num_ch) {
 
@@ -124,6 +137,7 @@ function op_processor(mode_state, math_statement_obj, text, operator_char, opera
        
                 
     }
+
 
     return [mode_state, math_statement_obj, text]
 }
