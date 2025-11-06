@@ -35,11 +35,28 @@ console.log(result); // Output: 8
 
 function control_text_property(text_elem) {
             console.log(text_elem.textContent.length + "  leng")
-            if(text_elem.length > 5) {
+
+            if(text_elem.textContent.length > 38) {
+                text_elem.style.setProperty('font-size', '18px');
+                console.log("30 length")
+            } 
+            else if(text_elem.textContent.length > 30) {
+                text_elem.style.setProperty('font-size', '22px');
+                console.log("30 length")
+            } 
+            else if(text_elem.textContent.length > 25) {
+                text_elem.style.setProperty('font-size', '28px');
+                console.log("25 length")
+            } 
+            else if(text_elem.textContent.length > 15) {
+                console.log("0000")
                 // document.documentElement.style.setProperty("--primary-color", "purple");
-                text_elem.style.setProperty('font-size', '10px');
-            } else {
-                text_elem.style.setProperty('font-size', '30px');
+                text_elem.style.setProperty('font-size', '32px');
+                console.log("15 length")
+            } 
+            
+            else {
+                text_elem.style.setProperty('font-size', '36px');
             }
 }
 
@@ -107,7 +124,7 @@ function op_processor(mode_state, math_statement_obj, text, operator_char, opera
                 
                  
                 
-                text = text + " " + operator_char + " " ;            
+                text = text + " " + operator_char + " " ;          
             
     } else {
         let temp_list = text.split(' ')

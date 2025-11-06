@@ -361,7 +361,7 @@
                    screen_text.textContent = op_list[2];
                    mode_state_machine = op_list[0];
                    math_statement = op_list[1];  
-
+                   control_text_property(screen_text);
                    
                 }
 
@@ -426,6 +426,7 @@
                    // screen_text.textContent = write_number(screen_text.textContent, " - "); 
                    let op_list = op_processor(mode_state_machine, math_statement, screen_text.textContent, "-", "minus" )
                    screen_text.textContent = op_list[2];
+                   control_text_property(screen_text);
                    mode_state_machine = op_list[0];
                    math_statement = op_list[1];  
                 }
@@ -468,6 +469,7 @@
                    
                    let op_list = op_processor(mode_state_machine, math_statement, screen_text.textContent, "\u00F7", "divide" )
                    screen_text.textContent = op_list[2];
+                   control_text_property(screen_text);
                    mode_state_machine = op_list[0];
                    math_statement = op_list[1];  
                 }
@@ -485,11 +487,11 @@
 
                 screen_text.textContent = "0";
 
-               math_statement = {num1:'0', num2:'', operator:'', operation:''};
+                math_statement = {num1:'0', num2:'', operator:'', operation:''};
                 mode_state_machine = {num1:true, operator_can_be_entered:false, num2:false, num1_decimal_used:false, num2_decimal_used:false};
                 //operator_entry_mode = false;
                 //operator_entry_mode = false;
-
+                control_text_property(screen_text);
                 
         });
 
