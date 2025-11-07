@@ -128,7 +128,7 @@
                     console.log("num1 button one " + math_statement.num1);
                 }
 
-                control_text_property(screen_text);
+                control_text_size(screen_text);
                
             });
 
@@ -155,12 +155,12 @@
                         console.log("11%% " + math_statement.operator);
                         math_statement.num2 = write_char(math_statement.num2, "1");
                         screen_text.textContent = math_statement.num1 + " " + math_statement.operator + " " + math_statement.num2;
-                        control_text_property(screen_text);
+                        control_text_size(screen_text);
                     } 
                 } else {
                     math_statement.num1 = write_char(screen_text.textContent, "1");
                     screen_text.textContent = math_statement.num1;
-                    control_text_property(screen_text);
+                    control_text_size(screen_text);
                     console.log("num1 button one " + math_statement.num1);
                 }
                
@@ -329,7 +329,7 @@
                     math_statement.num2 = write_char(math_statement.num2, "0")
                     temp[2] = math_statement.num2;
                     screen_text.textContent = temp.join(' ');
-                    control_text_property(screen_text);
+                    control_text_size(screen_text);
 
                     
                 } else {
@@ -337,7 +337,7 @@
                     // console.log("_____" + math_statement.num1)
                     math_statement.num1 = write_char(math_statement.num1, "0")
                     screen_text.textContent = math_statement.num1;
-                    control_text_property(screen_text);
+                    control_text_size(screen_text);
                     console.log("num1 button one " + math_statement.num1);
                 }
 
@@ -361,7 +361,7 @@
                    screen_text.textContent = op_list[2];
                    mode_state_machine = op_list[0];
                    math_statement = op_list[1];  
-                   control_text_property(screen_text);
+                   control_text_size(screen_text);
                    
                 }
 
@@ -426,7 +426,7 @@
                    // screen_text.textContent = write_number(screen_text.textContent, " - "); 
                    let op_list = op_processor(mode_state_machine, math_statement, screen_text.textContent, "-", "minus" )
                    screen_text.textContent = op_list[2];
-                   control_text_property(screen_text);
+                   control_text_size(screen_text);
                    mode_state_machine = op_list[0];
                    math_statement = op_list[1];  
                 }
@@ -469,7 +469,7 @@
                    
                    let op_list = op_processor(mode_state_machine, math_statement, screen_text.textContent, "\u00F7", "divide" )
                    screen_text.textContent = op_list[2];
-                   control_text_property(screen_text);
+                   control_text_size(screen_text);
                    mode_state_machine = op_list[0];
                    math_statement = op_list[1];  
                 }
@@ -491,7 +491,7 @@
                 mode_state_machine = {num1:true, operator_can_be_entered:false, num2:false, num1_decimal_used:false, num2_decimal_used:false};
                 //operator_entry_mode = false;
                 //operator_entry_mode = false;
-                control_text_property(screen_text);
+                control_text_size(screen_text);
                 
         });
 
@@ -510,7 +510,7 @@
                         screen_text.textContent = write_char(screen_text.textContent, ".");
                         let temp = screen_text.textContent.split(" ");
                         math_statement.num2 = temp[2];
-                        control_text_property(screen_text);
+                        control_text_size(screen_text);
                     }
                     
                 } 
@@ -526,7 +526,7 @@
                    // if(!(math_statement['num2']).includes('.')) { }
                     screen_text.textContent = write_char(screen_text.textContent, ".");
                     math_statement.num1 = screen_text.textContent;
-                    control_text_property(screen_text);
+                    control_text_size(screen_text);
 
                     console.log("2nd ")
                 }

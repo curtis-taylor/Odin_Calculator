@@ -33,18 +33,25 @@ const operation = 'add';
 const result = operations[operation](5, 3);
 console.log(result); // Output: 8
 
-function control_text_property(text_elem) {
+function trucate_number(text_elem) {
+    
+}
+
+function control_text_size(text_elem) {
             console.log(text_elem.textContent.length + "  leng")
 
-            if(text_elem.textContent.length > 38) {
+            if(text_elem.textContent.length > 30) {
                 text_elem.style.setProperty('font-size', '18px');
                 console.log("30 length")
-            } 
-            else if(text_elem.textContent.length > 30) {
-                text_elem.style.setProperty('font-size', '22px');
-                console.log("30 length")
+                let temp = text_elem.textContent.split(' ');
+                console.log(temp);
+                console.log("&&&&&&&&&&&&&&&&&&&&")
             } 
             else if(text_elem.textContent.length > 25) {
+                text_elem.style.setProperty('font-size', '20px');
+                console.log("30 length")
+            } 
+            else if(text_elem.textContent.length > 20) {
                 text_elem.style.setProperty('font-size', '28px');
                 console.log("25 length")
             } 
@@ -58,6 +65,7 @@ function control_text_property(text_elem) {
             else {
                 text_elem.style.setProperty('font-size', '36px');
             }
+            
 }
 
 function write_char(original_text, num_ch) {
