@@ -34,7 +34,13 @@ const result = operations[operation](5, 3);
 console.log(result); // Output: 8
 
 function trucate_number(text_elem) {
-    
+   let temp = text_elem.textContent.split(' ');
+   console.log(temp);
+   console.log("&&&&&&&&&&&&&&&&&&&&")  
+   if(temp.length == 1) {
+     temp[0]
+   }
+
 }
 
 function control_text_size(text_elem) {
@@ -46,6 +52,13 @@ function control_text_size(text_elem) {
                 let temp = text_elem.textContent.split(' ');
                 console.log(temp);
                 console.log("&&&&&&&&&&&&&&&&&&&&")
+
+                if(temp.length == 1) {
+                    text_elem.textContent = String(parseFloat(temp[0]) * 1);
+                } else if(temp.length == 2) {
+                    
+                }
+
             } 
             else if(text_elem.textContent.length > 25) {
                 text_elem.style.setProperty('font-size', '20px');
