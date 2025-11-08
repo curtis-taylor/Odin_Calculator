@@ -64,7 +64,7 @@
 
         let math_statement = {num1:'0', num2:'', operator:'', operation:''};
         let math_statement_list = [];
-        let mode_state_machine = {num1:true, operator_can_be_entered:false, num2:false, num1_decimal_used:false, num2_decimal_used:false};
+        let mode_state_machine = {num1:true, operator_can_be_entered:false, num2:false, num1_decimal_used:false, num2_decimal_used:false, can_use_back_button: true };
         let operator_entry_mode = false;
         let decimal_not_used = false;
 
@@ -83,7 +83,7 @@
 
                 if(screen_text.textContent != "0") {
                     console.log("roc22");
-                    if(math_statement.num2.length > 0 ){
+                    if((math_statement.num2.length > 0) && (!(math_statement.num2.includes('e'))) ){
                         math_statement.num2 = math_statement.num2.slice(0, -1);
                         
                         if(math_statement.num2.length > 0) {
@@ -99,7 +99,7 @@
 
                     } else {
                         console.log("else")
-                        if(math_statement.num1.length > 0) {
+                        if((math_statement.num1.length > 0) && (!(math_statement.num1.includes('e')))) {
                             math_statement.num1 = math_statement.num1.slice(0, -1);
                             screen_text.textContent = math_statement.num1;
                         } 
@@ -118,7 +118,7 @@
 
                 //screen_text.textContent = write_char(screen_text.textContent, "1")
                 
-
+                // 
                 if(math_statement.operator != '') {
                     let temp = screen_text.textContent.split(" ");
                     math_statement.num2 = temp[2];

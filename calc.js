@@ -158,7 +158,7 @@ function op_processor(mode_state, math_statement_obj, text, operator_char, opera
 
         math_statement_obj['num1'] = operations[math_statement_obj.operation](parseFloat(math_statement_obj['num1']), parseFloat(math_statement_obj['num2']));
         math_statement_obj['operator'] = operator_char;
-        math_statement_obj['operation'] = operation
+        math_statement_obj['operation'] = operation;
         mode_state.operator_can_be_entered = false;
         mode_state.num1 = false;
 
