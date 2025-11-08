@@ -118,15 +118,20 @@
 
                 //screen_text.textContent = write_char(screen_text.textContent, "1")
                 
-                // 
+                console.log("op op " + math_statement.operator);
+                
+                
+                // IF STATEMENT NEEDED TO BE ABLE TO ERASE 1ST NUMBER AFTER OPERATOR IS ALREADY ENTERED
+                // ONLY AFTER "e" exponent number is used is user unable to erase a number
                 if(math_statement.operator != '') {
                     let temp = screen_text.textContent.split(" ");
                     math_statement.num2 = temp[2];
-                    console.log("num2 button one " + math_statement.num1 + " " + math_statement.num2);
+                    console.log("back num2 button one " + math_statement.num1 + " " + math_statement.num2);
+                    console.log(temp)
                 } else {
                     math_statement.num1 = screen_text.textContent;
-                    console.log("num1 button one " + math_statement.num1);
-                }
+                    console.log("back num1 button one " + math_statement.num1);
+                } 
 
                 control_text_size(screen_text);
                

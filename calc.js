@@ -55,8 +55,16 @@ function control_text_size(text_elem) {
 
                 if(temp.length == 1) {
                     text_elem.textContent = String(parseFloat(temp[0]) * 1);
+                    console.log("control 1 " + text_elem.textContent);
+                
                 } else if(temp.length == 2) {
-                    
+                    console.log("control 2")
+                     temp[0] = String(parseFloat(temp[0]) * 1)
+                     text_elem.textContent = temp[0] + " " + temp[1] + " ";
+                } else {
+                    temp[0] = String(parseFloat(temp[0]) * 1);
+                    temp[2] = String(parseFloat(temp[2]) * 1);
+                    text_elem.textContent = temp[0] + " " + temp[1] + " " + temp[2];
                 }
 
             } 
