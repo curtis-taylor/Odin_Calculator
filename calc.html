@@ -66,7 +66,6 @@
         let math_statement_list = [];
         let mode_state_machine = {num1:true, operator_can_be_entered:false, num2:false, num1_decimal_used:false, num2_decimal_used:false, can_use_back_button: true };
         let operator_entry_mode = false;
-        let decimal_not_used = false;
 
         
         
@@ -144,7 +143,7 @@
                 //console.log("roc");
                 // square_test(parseInt(slider_text.textContent));
                 console.log("roc1 " + (math_statement.num2 != '0'));
-                operator_entry_mode = true;
+                
                 mode_state_machine.num1 = false;
                 mode_state_machine.operator_can_be_entered = true;
 
@@ -177,7 +176,7 @@
                 e.stopImmediatePropagation();
                 console.log("roc");
                 // square_test(parseInt(slider_text.textContent));
-                // operator_entry_mode = true;
+                
                 mode_state_machine.operator_can_be_entered = true;
 
                 let temp_list = number_processor( math_statement.operator, screen_text.textContent, "2");
@@ -322,7 +321,7 @@
                 e.stopImmediatePropagation();
                 console.log("roc");
                 
-                operator_entry_mode = true;
+                
                 mode_state_machine.operator_can_be_entered = true;
     
 
@@ -371,7 +370,7 @@
                 }
 
                 console.log("add " + math_statement.num2)
-                operator_entry_mode = false;              
+                            
               
                 /*
                 if(operator_entry_mode) {
@@ -435,7 +434,7 @@
                    mode_state_machine = op_list[0];
                    math_statement = op_list[1];  
                 }
-                operator_entry_mode = false;
+                
         });
 
         x_button.addEventListener("click", function(e) {
@@ -453,7 +452,7 @@
                    mode_state_machine = op_list[0];
                    math_statement = op_list[1];  
                 }
-                operator_entry_mode = false;
+                
         });
 
         divide_button.addEventListener("click", function(e) {
@@ -478,7 +477,7 @@
                    mode_state_machine = op_list[0];
                    math_statement = op_list[1];  
                 }
-                operator_entry_mode = false;
+                
         });
 
         clear_button.addEventListener("click", function(e) {
@@ -487,7 +486,7 @@
                 e.stopImmediatePropagation();
                 console.log("roc");
                 // square_test(parseInt(slider_text.textContent));
-                operator_entry_mode = true;
+                
                 mode_state_machine.operator_can_be_entered = true;
 
                 screen_text.textContent = "0";
@@ -561,16 +560,23 @@
                 e.stopImmediatePropagation();
                 //console.log("roc");
                 // square_test(parseInt(slider_text.textContent));
-                 if(mode_state_machine.operator_can_be_entered) {
+                
+                
+                if(math_statement.num2 != '') {
                    // screen_text.textContent = write_number(screen_text.textContent, " - "); 
                    console.dir(" x button " + Object.keys(math_statement).length)
+                   let anwser = operations[math_statement.operation](math_statement.num1, math_statement.num2);
+                   // let op_list = op_processor(mode_state_machine, math_statement, screen_text.textContent, "x", "multiply" )
+                   screen_text.textContent = anwser;
+                   math_statement.num1 = anwser;
+                   math_statement.operator = '';
+                   math_statement.operation = '';
+                   math_statement.num2 = '';
+                   mode_state_machine = {num1:true, operator_can_be_entered:false, num2:false, num1_decimal_used:false, num2_decimal_used:false, can_use_back_button: false };
+       
                    
-                   let op_list = op_processor(mode_state_machine, math_statement, screen_text.textContent, "x", "multiply" )
-                   screen_text.textContent = op_list[2];
-                   mode_state_machine = op_list[0];
-                   math_statement = op_list[1];  
                 }
-                operator_entry_mode = false;
+                
         });
 
 
