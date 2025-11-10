@@ -491,7 +491,7 @@
 
                 screen_text.textContent = "0";
 
-                math_statement = {num1:'0', num2:'', operator:'', operation:''};
+                math_statement = {num1:'0', num2:'', operator:'', operation:'', answer:''};
                 mode_state_machine = {num1:true, operator_can_be_entered:false, num2:false, can_use_back_button: true};
                 
                 //operator_entry_mode = false;
@@ -527,7 +527,7 @@
                     math_statement.num2 = "0.";
 
                 }
-                else if(!(math_statement['num1']).includes('.')) {
+                else if(!(math_statement['num1']).includes('.') && (math_statement.answer != '')) {
                    // if(!(math_statement['num2']).includes('.')) { }
                     screen_text.textContent = write_char(screen_text.textContent, ".");
                     math_statement.num1 = screen_text.textContent;
