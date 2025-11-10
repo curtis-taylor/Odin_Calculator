@@ -62,7 +62,7 @@
         const clear_button = document.querySelector('#clear');
         const back_button = document.querySelector('#back');
 
-        let math_statement = {num1:'0', num2:'', operator:'', operation:''};
+        let math_statement = {num1:'0', num2:'', operator:'', operation:'', answer:''};
         let math_statement_list = [];
         let mode_state_machine = {num1:true, operator_can_be_entered:false, num2:false, can_use_back_button: true };
         let operator_entry_mode = false;
@@ -507,7 +507,7 @@
                 console.log("roc");
                 // square_test(parseInt(slider_text.textContent));
 
-                if((math_statement['operator']) && (math_statement['num2'])) {
+                if((math_statement['operator'] != '') && (math_statement['num2'] != '')) {
                     console.log("decimal insert into num2")
                     console.log("1st ")
                     if(!(math_statement['num2']).includes('.')) {
@@ -519,7 +519,7 @@
                     }
                     
                 } 
-                else if((math_statement['operator'])) {
+                else if((math_statement['operator'] != '')) {
                     console.log("decimal first char for num2");
 
                     screen_text.textContent = screen_text.textContent + "0.";
