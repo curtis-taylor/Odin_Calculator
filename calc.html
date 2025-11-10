@@ -64,7 +64,7 @@
 
         let math_statement = {num1:'0', num2:'', operator:'', operation:''};
         let math_statement_list = [];
-        let mode_state_machine = {num1:true, operator_can_be_entered:false, num2:false, num1_decimal_used:false, num2_decimal_used:false, can_use_back_button: true };
+        let mode_state_machine = {num1:true, operator_can_be_entered:false, num2:false, can_use_back_button: true };
         let operator_entry_mode = false;
 
         
@@ -492,7 +492,8 @@
                 screen_text.textContent = "0";
 
                 math_statement = {num1:'0', num2:'', operator:'', operation:''};
-                mode_state_machine = {num1:true, operator_can_be_entered:false, num2:false, num1_decimal_used:false, num2_decimal_used:false};
+                mode_state_machine = {num1:true, operator_can_be_entered:false, num2:false, can_use_back_button: true};
+                
                 //operator_entry_mode = false;
                 //operator_entry_mode = false;
                 control_text_size(screen_text);
@@ -565,14 +566,14 @@
                 if(math_statement.num2 != '') {
                    // screen_text.textContent = write_number(screen_text.textContent, " - "); 
                    console.dir(" x button " + Object.keys(math_statement).length)
-                   let anwser = operations[math_statement.operation](math_statement.num1, math_statement.num2);
+                   let anwser = operations[math_statement.operation](parseFloat(math_statement.num1), parseFloat(math_statement.num2));
                    // let op_list = op_processor(mode_state_machine, math_statement, screen_text.textContent, "x", "multiply" )
                    screen_text.textContent = anwser;
                    math_statement.num1 = anwser;
                    math_statement.operator = '';
                    math_statement.operation = '';
                    math_statement.num2 = '';
-                   mode_state_machine = {num1:true, operator_can_be_entered:false, num2:false, num1_decimal_used:false, num2_decimal_used:false, can_use_back_button: false };
+                   mode_state_machine = {num1:true, operator_can_be_entered:true, num2:false, can_use_back_button: false }; 
        
                    
                 }
