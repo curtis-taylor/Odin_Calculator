@@ -159,9 +159,7 @@ function op_processor(mode_state, math_statement_obj, text, operator_char, opera
         let temp_list = text.split(' ')
 
 
-        console.log(text);
-        console.log(math_statement_obj)
-        console.log("***  " + math_statement_obj.operation)
+        
         //math_statement_obj['num2'] = temp_list[2];
 
         math_statement_obj['num1'] = operations[math_statement_obj.operation](parseFloat(math_statement_obj['num1']), parseFloat(math_statement_obj['num2']));
@@ -171,13 +169,18 @@ function op_processor(mode_state, math_statement_obj, text, operator_char, opera
         mode_state.operator_can_be_entered = false;
         mode_state.num1 = false;
 
+        console.log(text);
+        console.log(math_statement_obj)
+        console.log("***  " + math_statement_obj.operation)
+
         // let mode_state_machine = {num1:true, operator_can_be_entered:false, num2:false, num1_decimal_used:false, num2_decimal_used:false};
         //math_statement_list[0] = operations['add'](parseFloat(math_statement_list[0]), parseFloat(temp_list[2]));
         // math_statement_list[1] ="+";
         
         
-        text = String(math_statement_obj['Answer']) + " Answer " + operator_char + " ";
-         math_statement_obj.num2 = "";
+        text = String(math_statement_obj['answer']) + " " + operator_char + " ";
+        
+        math_statement_obj.num2 = "";
         //delete math_statement_obj.num2;
         //console.log(math_statement_list);
 

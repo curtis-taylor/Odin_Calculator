@@ -97,15 +97,17 @@
                         screen_text.textContent = math_statement.num1;
 
                     } else {
-                        console.log("else")
+                        console.log("else " + math_statement.num1);
                         if((math_statement.num1.length > 0) && (!(math_statement.num1.includes('e')))) {
                             math_statement.num1 = math_statement.num1.slice(0, -1);
                             screen_text.textContent = math_statement.num1;
+                            console.log("else 2");
                         } 
 
                         if(math_statement.num1.length == 0) {
                             math_statement.num1 = '0';
                             screen_text.textContent = '0';
+                            console.log("else 3");
                         }
 
 
@@ -119,7 +121,7 @@
                 
                 console.log("op op " + math_statement.operator);
             
-                
+                /*
                 // IF STATEMENT NEEDED TO BE ABLE TO ERASE 1ST NUMBER AFTER OPERATOR IS ALREADY ENTERED
                 // ONLY AFTER "e" exponent number is used is user unable to erase a number
                 if(math_statement.operator != '') {
@@ -130,7 +132,7 @@
                 } else {
                     math_statement.num1 = screen_text.textContent;
                     console.log("back num1 button one " + math_statement.num1);
-                } 
+                } */
 
                 control_text_size(screen_text);
                
@@ -366,6 +368,7 @@
                    screen_text.textContent = op_list[2];
                    mode_state_machine = op_list[0];
                    math_statement = op_list[1];  
+                   console.log(math_statement['num1'] + " math_sta")
                    control_text_size(screen_text);
                    
                 }
