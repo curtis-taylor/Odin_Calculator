@@ -118,7 +118,7 @@
                 //screen_text.textContent = write_char(screen_text.textContent, "1")
                 
                 console.log("op op " + math_statement.operator);
-                
+            
                 
                 // IF STATEMENT NEEDED TO BE ABLE TO ERASE 1ST NUMBER AFTER OPERATOR IS ALREADY ENTERED
                 // ONLY AFTER "e" exponent number is used is user unable to erase a number
@@ -250,6 +250,7 @@
                 //e.stopPropagation();
                 e.stopImmediatePropagation();
               
+                
                 mode_state_machine.operator_can_be_entered = true;
 
                 let temp_list = number_processor( math_statement.operator, screen_text.textContent, "5");
