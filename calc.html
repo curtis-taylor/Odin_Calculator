@@ -571,7 +571,7 @@
                 if(math_statement.num2 != '') {
                    // screen_text.textContent = write_number(screen_text.textContent, " - "); 
                    console.dir(" x button " + Object.keys(math_statement).length)
-                   let answer = String([math_statement.operation](parseFloat(math_statement.num1), parseFloat(math_statement.num2)));
+                   let answer = String(operations[math_statement.operation](parseFloat(math_statement.num1), parseFloat(math_statement.num2)));
                    // let op_list = op_processor(mode_state_machine, math_statement, screen_text.textContent, "x", "multiply" )
                    screen_text.textContent = answer;
                    math_statement.num1 = answer;
