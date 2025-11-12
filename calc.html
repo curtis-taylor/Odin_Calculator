@@ -97,11 +97,12 @@
                         screen_text.textContent = math_statement.num1;
 
                     } else {
-                        console.log("else " + math_statement.num1);
+                        console.log("else " + math_statement.num1 + " " + (!(math_statement.num1.includes('e'))));
                         if((math_statement.num1.length > 0) && (!(math_statement.num1.includes('e')))) {
+                            console.log("else 2 " + math_statement.num1 )
                             math_statement.num1 = math_statement.num1.slice(0, -1);
                             screen_text.textContent = math_statement.num1;
-                            console.log("else 2");
+                            console.log("else 2 " + math_statement.num1);
                         } 
 
                         if(math_statement.num1.length == 0) {
@@ -570,10 +571,10 @@
                 if(math_statement.num2 != '') {
                    // screen_text.textContent = write_number(screen_text.textContent, " - "); 
                    console.dir(" x button " + Object.keys(math_statement).length)
-                   let anwser = operations[math_statement.operation](parseFloat(math_statement.num1), parseFloat(math_statement.num2));
+                   let answer = String([math_statement.operation](parseFloat(math_statement.num1), parseFloat(math_statement.num2)));
                    // let op_list = op_processor(mode_state_machine, math_statement, screen_text.textContent, "x", "multiply" )
-                   screen_text.textContent = anwser;
-                   math_statement.num1 = anwser;
+                   screen_text.textContent = answer;
+                   math_statement.num1 = answer;
                    math_statement.operator = '';
                    math_statement.operation = '';
                    math_statement.num2 = '';

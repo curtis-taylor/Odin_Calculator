@@ -162,7 +162,7 @@ function op_processor(mode_state, math_statement_obj, text, operator_char, opera
         
         //math_statement_obj['num2'] = temp_list[2];
 
-        math_statement_obj['num1'] = operations[math_statement_obj.operation](parseFloat(math_statement_obj['num1']), parseFloat(math_statement_obj['num2']));
+        math_statement_obj['num1'] = String(operations[math_statement_obj.operation](parseFloat(math_statement_obj['num1']), parseFloat(math_statement_obj['num2'])));
         math_statement_obj['answer'] = math_statement_obj['num1'];
         math_statement_obj['operator'] = operator_char;
         math_statement_obj['operation'] = operation;
