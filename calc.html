@@ -97,7 +97,7 @@
                         screen_text.textContent = math_statement.num1;
 
                     } else {
-                        console.log("else " + math_statement.num1 + " " + (!(math_statement.num1.includes('e'))));
+                        console.log("else " + typeof(math_statement.num1) + " " + (!(math_statement.num1.includes('e'))));
                         if((math_statement.num1.length > 0) && (!(math_statement.num1.includes('e')))) {
                             console.log("else 2 " + math_statement.num1 )
                             math_statement.num1 = math_statement.num1.slice(0, -1);
@@ -454,6 +454,7 @@
                    
                    let op_list = op_processor(mode_state_machine, math_statement, screen_text.textContent, "x", "multiply" )
                    screen_text.textContent = op_list[2];
+                   control_text_size(screen_text);
                    mode_state_machine = op_list[0];
                    math_statement = op_list[1];  
                 }
@@ -471,6 +472,7 @@
                    screen_text.textContent = screen_text.textContent + " " + "\u00F7" + " ";
                 }
                 operator_entry_mode = false; */
+
 
                 if(mode_state_machine.operator_can_be_entered) {
                    // screen_text.textContent = write_number(screen_text.textContent, " - "); 
@@ -569,17 +571,30 @@
                 
                 
                 if(math_statement.num2 != '') {
-                   // screen_text.textContent = write_number(screen_text.textContent, " - "); 
-                   console.dir(" x button " + Object.keys(math_statement).length)
-                   let answer = String(operations[math_statement.operation](parseFloat(math_statement.num1), parseFloat(math_statement.num2)));
-                   // let op_list = op_processor(mode_state_machine, math_statement, screen_text.textContent, "x", "multiply" )
-                   screen_text.textContent = answer;
-                   math_statement.num1 = answer;
-                   math_statement.operator = '';
-                   math_statement.operation = '';
-                   math_statement.num2 = '';
-                   mode_state_machine = {num1:true, operator_can_be_entered:true, num2:false, can_use_back_button: false }; 
-       
+                   
+                   if((math_statement.num2 == '0') && (math_statement.operation == 'divide')) {
+                        let answer = String(operations[math_statement.operation](parseFloat(math_statement.num1), parseFloat(math_statement.num2)));
+                        // let op_list = op_processor(mode_state_machine, math_statement, screen_text.textContent, "x", "multiply" )
+                        screen_text.textContent = "CANT DIVIDE A NUMBER BY ZER0";
+                        control_text_size(screen_text);
+                        math_statement.num1 = "0";
+                        math_statement.operator = '';
+                        math_statement.operation = '';
+                        math_statement.num2 = '';
+                        mode_state_machine = {num1:true, operator_can_be_entered:false, num2:false, can_use_back_button: false }; 
+                   } 
+                   else {
+                        // screen_text.textContent = write_number(screen_text.textContent, " - "); 
+                        console.dir(" x button " + Object.keys(math_statement).length)
+                        let answer = String(operations[math_statement.operation](parseFloat(math_statement.num1), parseFloat(math_statement.num2)));
+                        // let op_list = op_processor(mode_state_machine, math_statement, screen_text.textContent, "x", "multiply" )
+                        screen_text.textContent = answer;
+                        math_statement.num1 = answer;
+                        math_statement.operator = '';
+                        math_statement.operation = '';
+                        math_statement.num2 = '';
+                        mode_state_machine = {num1:true, operator_can_be_entered:true, num2:false, can_use_back_button: false }; 
+                   }
                    
                 }
                 
