@@ -537,7 +537,7 @@
 
                 if((math_statement['operator'] != '') && (math_statement['num2'] != '')) {
                     console.log("decimal insert into num2")
-                    console.log("1st ")
+                    console.log("1st " + (!(math_statement['num2']).includes('.')))
                     if(!(math_statement['num2']).includes('.')) {
     
                         screen_text.textContent = write_char(screen_text.textContent, ".");
@@ -555,13 +555,25 @@
                     math_statement.num2 = "0.";
 
                 }
-                else if(!(math_statement['num1']).includes('.') && (math_statement.answer != '')) {
+                //# Nov 14 2025
+                else if(!(math_statement['num1']).includes('.')) {
                    // if(!(math_statement['num2']).includes('.')) { }
+                   console.log("++++++++ " + math_statement.answer)
+                   if(math_statement.answer == '') {
                     screen_text.textContent = write_char(screen_text.textContent, ".");
                     math_statement.num1 = screen_text.textContent;
                     control_text_size(screen_text);
 
                     console.log("2nd ")
+                   } 
+                }
+                else if(math_statement.num1 == '0') {
+                    screen_text.textContent = '0.';
+                    math_statement.num1 = '0.';
+
+                    control_text_size(screen_text);
+
+                    console.log("math_statement.num1 = 0 ");
                 }
                 else {
 
