@@ -64,7 +64,7 @@
 
         let math_statement = {num1:'0', num2:'', operator:'', operation:'', answer:''};
         let math_statement_list = [];
-        let mode_state_machine = {num1:true, operator_can_be_entered:false, num2:false, can_use_back_button: true };
+        let mode_state_machine = {num1:true, operator_can_be_entered:false, num2:false};
         let operator_entry_mode = false;
 
         
@@ -362,8 +362,15 @@
                 //e.stopPropagation();
                 e.stopImmediatePropagation();
                 
-                // square_test(parseInt(slider_text.textContent));
-                if(mode_state_machine.operator_can_be_entered) {
+              //##  mode_state_machine.operator_can_be_entered as a switch and is needed to prevent
+              //## double entry of operators but also allows this button to be used as an equal button but
+              //## ADDS "+" after CALCULATION is done. A value of "true", enables button function and "false" does
+              //## THE OPPOSITE. The value is set in various places in "calc.html" and "calc.js"
+              
+              //## THERE MAYBE a way to just use "math_statement.operator" as both a switch and operator value
+              //holder but more IF STATEMENT would probably be needed
+              if(mode_state_machine.operator_can_be_entered) {
+               
                    // screen_text.textContent = write_number(screen_text.textContent, " - "); 
                    let op_list = op_processor(mode_state_machine, math_statement, screen_text.textContent, "+", "add" )
                    screen_text.textContent = op_list[2];
@@ -372,7 +379,7 @@
                    console.log(math_statement['num1'] + " math_sta")
                    control_text_size(screen_text);
                    
-                }
+              }
 
                 console.log("add " + math_statement.num2)
                             
@@ -429,10 +436,16 @@
                 e.preventDefault();
                 //e.stopPropagation();
                 e.stopImmediatePropagation();
-                //console.log("roc");
-                // square_test(parseInt(slider_text.textContent));
+                
+                //##  mode_state_machine.operator_can_be_entered as a switch and is needed to prevent
+                //## double entry of operators but also allows this button to be used as an equal button but
+                //## ADDS "-" after CALCULATION is done. A value of "true", enables button function and "false" does
+                //## THE OPPOSITE. The value is set in various places in "calc.html" and "calc.js"
+              
+                //## THERE MAYBE a way to just use "math_statement.operator" as both a switch and operator value
+                //holder but more IF STATEMENT would probably be needed
+               
                 if(mode_state_machine.operator_can_be_entered) {
-                   // screen_text.textContent = write_number(screen_text.textContent, " - "); 
                    let op_list = op_processor(mode_state_machine, math_statement, screen_text.textContent, "-", "minus" )
                    screen_text.textContent = op_list[2];
                    control_text_size(screen_text);
@@ -446,8 +459,14 @@
                 e.preventDefault();
                 //e.stopPropagation();
                 e.stopImmediatePropagation();
-                //console.log("roc");
-                // square_test(parseInt(slider_text.textContent));
+
+                 //##  mode_state_machine.operator_can_be_entered as a switch and is needed to prevent
+                //## double entry of operators but also allows this button to be used as an equal button but
+                //## ADDS "x" after CALCULATION is done. A value of "true", enables button function and "false" does
+                //## THE OPPOSITE. The value is set in various places in "calc.html" and "calc.js"
+              
+                //## THERE MAYBE a way to just use "math_statement.operator" as both a switch and operator value
+                //holder but more IF STATEMENT would probably be needed
                  if(mode_state_machine.operator_can_be_entered) {
                    // screen_text.textContent = write_number(screen_text.textContent, " - "); 
                    console.dir(" x button " + Object.keys(math_statement).length)
@@ -465,15 +484,15 @@
                 e.preventDefault();
                 //e.stopPropagation();
                 e.stopImmediatePropagation();
-                //console.log("roc");
-                // square_test(parseInt(slider_text.textContent));
-             
-                /* if(operator_entry_mode) {
-                   screen_text.textContent = screen_text.textContent + " " + "\u00F7" + " ";
-                }
-                operator_entry_mode = false; */
+               
 
-
+                //##  mode_state_machine.operator_can_be_entered as a switch and is needed to prevent
+              //## double entry of operators but also allows this button to be used as an equal button but
+              //## ADDS "÷" after CALCULATION is done. A value of "true", enables button function and "false" does
+              //## THE OPPOSITE. The value is set in various places in "calc.html" and "calc.js"
+              
+              //## THERE MAYBE a way to just use "math_statement.operator" as both a switch and operator value
+              //holder but more IF STATEMENT would probably be needed
                 if(mode_state_machine.operator_can_be_entered) {
                    // screen_text.textContent = write_number(screen_text.textContent, " - "); 
                    console.dir(" x button " + Object.keys(math_statement).length)
@@ -494,12 +513,12 @@
                 console.log("roc");
                 // square_test(parseInt(slider_text.textContent));
                 
-                mode_state_machine.operator_can_be_entered = true;
+               // mode_state_machine.operator_can_be_entered = true;
 
                 screen_text.textContent = "0";
 
                 math_statement = {num1:'0', num2:'', operator:'', operation:'', answer:''};
-                mode_state_machine = {num1:true, operator_can_be_entered:false, num2:false, can_use_back_button: true};
+                mode_state_machine = {num1:true, operator_can_be_entered:false, num2:false };
                 
                 //operator_entry_mode = false;
                 //operator_entry_mode = false;
@@ -511,8 +530,10 @@
                 e.preventDefault();
                 //e.stopPropagation();
                 e.stopImmediatePropagation();
-                console.log("roc");
+                console.log("roc " + (math_statement['operator'] != '') + " " + (math_statement['num2'] != ''));
+                console.log(math_statement['operator']);
                 // square_test(parseInt(slider_text.textContent));
+
 
                 if((math_statement['operator'] != '') && (math_statement['num2'] != '')) {
                     console.log("decimal insert into num2")
@@ -566,22 +587,19 @@
                 e.preventDefault();
                 //e.stopPropagation();
                 e.stopImmediatePropagation();
-                //console.log("roc");
-                // square_test(parseInt(slider_text.textContent));
-                
                 
                 if(math_statement.num2 != '') {
                    
                    if((math_statement.num2 == '0') && (math_statement.operation == 'divide')) {
                         let answer = String(operations[math_statement.operation](parseFloat(math_statement.num1), parseFloat(math_statement.num2)));
                         // let op_list = op_processor(mode_state_machine, math_statement, screen_text.textContent, "x", "multiply" )
-                        screen_text.textContent = "CANT DIVIDE A NUMBER BY ZER0";
+                        screen_text.textContent = "CAN'T DIVIDE A NUMBER BY ZER0";
                         control_text_size(screen_text);
                         math_statement.num1 = "0";
                         math_statement.operator = '';
                         math_statement.operation = '';
                         math_statement.num2 = '';
-                        mode_state_machine = {num1:true, operator_can_be_entered:false, num2:false, can_use_back_button: false }; 
+                        mode_state_machine = {num1:true, operator_can_be_entered:false, num2:false }; 
                    } 
                    else {
                         // screen_text.textContent = write_number(screen_text.textContent, " - "); 
@@ -593,7 +611,7 @@
                         math_statement.operator = '';
                         math_statement.operation = '';
                         math_statement.num2 = '';
-                        mode_state_machine = {num1:true, operator_can_be_entered:true, num2:false, can_use_back_button: false }; 
+                        mode_state_machine = {num1:true, operator_can_be_entered:true, num2:false }; 
                    }
                    
                 }

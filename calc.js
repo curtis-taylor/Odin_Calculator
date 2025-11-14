@@ -168,7 +168,7 @@ function op_processor(mode_state, math_statement_obj, text, operator_char, opera
             math_statement_obj['operator'] = "";
             math_statement_obj['operation'] = "";
             mode_state.operator_can_be_entered = false;
-            text = "CANT DIVIDE A NUMBER BY ZER0";
+            text = "CAN'T DIVIDE A NUMBER BY ZER0";
         }
         else {
             math_statement_obj['num1'] = String(operations[math_statement_obj.operation](parseFloat(math_statement_obj['num1']), parseFloat(math_statement_obj['num2'])));
