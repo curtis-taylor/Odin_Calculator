@@ -92,8 +92,10 @@ function control_text_size(text_elem) {
 function write_char(original_text, num_ch) {
 
     if(num_ch == '.') {
+        console.log("<>< " + " " + num_ch + " " + (!(original_text.includes('.'))))
         if(!(original_text.includes('.'))) {
-        original_text = original_text + num_ch;
+           
+           original_text = original_text + num_ch;
         }
     }
     else if(original_text == '0') {
@@ -102,7 +104,7 @@ function write_char(original_text, num_ch) {
             console.log("zero suppose to returned " + original_text)
     } else {
         original_text = original_text + num_ch;
-        console.log(" original text  " + original_text);
+        console.log(" original text  1" + original_text);
     }
 
     return original_text

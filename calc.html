@@ -539,10 +539,13 @@
                     console.log("decimal insert into num2")
                     console.log("1st " + (!(math_statement['num2']).includes('.')))
                     if(!(math_statement['num2']).includes('.')) {
-    
-                        screen_text.textContent = write_char(screen_text.textContent, ".");
+                        screen_text.textContent = write_char(math_statement.num2, ".");
+                        //math_statement.num2 = write_char(screen_text.textContent, ".");
+                        screen_text.textContent = math_statement.num1 + " " + math_statement.operator + " " + math_statement.num2;
+                        
                         let temp = screen_text.textContent.split(" ");
                         math_statement.num2 = temp[2];
+                        console.log('.......... ' + math_statement.num2);
                         control_text_size(screen_text);
                     }
                     
@@ -564,7 +567,7 @@
                     math_statement.num1 = screen_text.textContent;
                     control_text_size(screen_text);
 
-                    console.log("2nd ")
+                    console.log("nov 14")
                    } 
                 }
                 else if(math_statement.num1 == '0') {
