@@ -96,6 +96,7 @@ function write_char(original_text, num_ch) {
         if(!(original_text.includes('.'))) {
            
            original_text = original_text + num_ch;
+           console.log("%%%%%%% " + original_text)
         }
     }
     else if(original_text == '0') {
