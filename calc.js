@@ -33,6 +33,7 @@ const operation = 'add';
 const result = operations[operation](5, 3);
 console.log(result); // Output: 8
 
+/*
 function trucate_number(text_elem) {
    let temp = text_elem.textContent.split(' ');
    console.log(temp);
@@ -41,7 +42,7 @@ function trucate_number(text_elem) {
      temp[0]
    }
 
-}
+} */
 
 function control_text_size(text_elem) {
             console.log(text_elem.textContent.length + "  leng")
@@ -152,18 +153,12 @@ function op_processor(mode_state, math_statement_obj, text, operator_char, opera
 
                 mode_state.operator_can_be_entered = false;
                 // math_statement_list.push(screen_text.textContent);
-                // math_statement_list.push(" + ")
-                
-                 
+                // math_statement_list.push(" + ")      
                 
                 text = text + " " + operator_char + " " ;          
             
     } else {
         let temp_list = text.split(' ')
-
-
-        
-        //math_statement_obj['num2'] = temp_list[2];
 
         if((math_statement_obj['num2'] == '0') && (math_statement_obj['operation'] == "divide")) {
             math_statement_obj['num1'] = String(operations[math_statement_obj.operation](parseFloat(math_statement_obj['num1']), parseFloat(math_statement_obj['num2'])));
@@ -180,26 +175,16 @@ function op_processor(mode_state, math_statement_obj, text, operator_char, opera
             math_statement_obj['operation'] = operation;
             mode_state.operator_can_be_entered = false;
             text = String(math_statement_obj['answer']) + " " + operator_char + " ";
-            // mode_state.num1 = false;
+
+            console.log("ANSWER : " + math_statement_obj['answer'])
 
         }
 
         console.log(text);
         console.log(math_statement_obj)
-        console.log("***  " + math_statement_obj.operation)
-
-        // let mode_state_machine = {num1:true, operator_can_be_entered:false, num2:false, num1_decimal_used:false, num2_decimal_used:false};
-        //math_statement_list[0] = operations['add'](parseFloat(math_statement_list[0]), parseFloat(temp_list[2]));
-        // math_statement_list[1] ="+";
-        
-        
-        
+        console.log("***  " + math_statement_obj.operation) 
         
         math_statement_obj.num2 = "";
-        //delete math_statement_obj.num2;
-        //console.log(math_statement_list);
-
-       
                 
     }
 
