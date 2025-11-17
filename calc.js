@@ -169,7 +169,7 @@ function op_processor(mode_state, math_statement_obj, text, operator_char, opera
             text = "CAN'T DIVIDE A NUMBER BY ZER0";
         }
         else {
-            math_statement_obj['num1'] = String(operations[math_statement_obj.operation](parseFloat(math_statement_obj['num1']), parseFloat(math_statement_obj['num2'])));
+            math_statement_obj['num1'] = String(operations[math_statement_obj.operation](parseInt(math_statement_obj['num1']), parseInt(math_statement_obj['num2'])));
             math_statement_obj['answer'] = math_statement_obj['num1'];
             math_statement_obj['operator'] = operator_char;
             math_statement_obj['operation'] = operation;
@@ -177,6 +177,7 @@ function op_processor(mode_state, math_statement_obj, text, operator_char, opera
             text = String(math_statement_obj['answer']) + " " + operator_char + " ";
 
             console.log("ANSWER : " + math_statement_obj['answer'])
+            console.log(math_statement_obj.num1 + math_statement_obj.num2);
 
         }
 
