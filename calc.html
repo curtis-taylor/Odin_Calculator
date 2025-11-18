@@ -558,7 +558,9 @@
                 if(math_statement.num2 != '') {
                    
                    if((math_statement.num2 == '0') && (math_statement.operation == 'divide')) {
-                        let answer = String(operations[math_statement.operation](parseFloat(math_statement.num1), parseFloat(math_statement.num2)));
+                        // let answer = String(operations[math_statement.operation](parseFloat(math_statement.num1), parseFloat(math_statement.num2)));
+                        let answer = String(operation_func(parseFloat(math_statement.num1), parseFloat(math_statement.num1), math_statement.operation));
+                        
                         // let op_list = op_processor(mode_state_machine, math_statement, screen_text.textContent, "x", "multiply" )
                         screen_text.textContent = "CAN'T DIVIDE A NUMBER BY ZER0";
                         control_text_size(screen_text);
@@ -571,9 +573,12 @@
                    else {
                         // screen_text.textContent = write_number(screen_text.textContent, " - "); 
                         console.dir(" x button " + Object.keys(math_statement).length)
-                        let answer = String(operations[math_statement.operation](parseFloat(math_statement.num1), parseFloat(math_statement.num2)));
+                        console.log(" EQUALS ADD" + math_statement.num1 + math_statement.num2);
+                        //let answer = String(operations[math_statement.operation](parseFloat(math_statement.num1), parseFloat(math_statement.num2)));
+                        let answer = String(operation_func(parseFloat(math_statement.num1), parseFloat(math_statement.num1), math_statement.operation));
                         // let op_list = op_processor(mode_state_machine, math_statement, screen_text.textContent, "x", "multiply" )
                         screen_text.textContent = answer;
+                        control_text_size(screen_text);
                         math_statement.num1 = answer;
                         math_statement.operator = '';
                         math_statement.operation = '';

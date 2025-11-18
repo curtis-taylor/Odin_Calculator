@@ -14,10 +14,37 @@ function multiply(a, b) {
 function divide(a, b) {
     return a / b;
 }
+*/
 
-function operate(op, a, b) {
-    
-} */
+
+function operation_func(a, b, op) {
+
+    let t = 0;
+    switch(op) {
+        case "add":
+            //t = Number((a + b)).toFixed(10);
+            t = parseFloat((a + b))
+            break;
+        case "minus":
+            //t = Number((a - b)).toFixed(10);
+            t = parseFloat((a - b))
+            break;
+        case "multiply":
+            // t = Number((a * b)).toFixed(10);
+            t = parseFloat((a * b))
+            break;
+        case "divide":
+            // t = Number((a / b)).toFixed(10);
+            t = parseFloat((a / b))
+            break;
+    }   
+
+    console.log(t + " ttttt")
+    return t
+}
+
+   
+ 
 
 const operations = {
     add: (a, b) => a + b,
@@ -25,8 +52,6 @@ const operations = {
     multiply: (a, b) => a * b,
     divide: (a,b) => a / b
 };
-
-
 
 
 const operation = 'add';
@@ -46,29 +71,33 @@ function trucate_number(text_elem) {
 
 function control_text_size(text_elem) {
             console.log(text_elem.textContent.length + "  leng")
+            let temp = text_elem.textContent.split(' ');
 
-            if(text_elem.textContent.length > 30) {
+            if(text_elem.textContent.length > 15) {
                 text_elem.style.setProperty('font-size', '18px');
                 console.log("30 length")
-                let temp = text_elem.textContent.split(' ');
-                console.log(temp);
+                
+                console.log(temp.length);
                 console.log("&&&&&&&&&&&&&&&&&&&&")
 
                 if(temp.length == 1) {
-                    text_elem.textContent = String(parseFloat(temp[0]) * 1);
+                    // text_elem.textContent = String(parseFloat(temp[0]) * 1);
+                    text_elem.textContent = String(parseFloat(temp[0]).toExponential());
                     console.log("control 1 " + text_elem.textContent);
                 
-                } else if(temp.length == 2) {
+                } else if((temp.length > 2) && (temp[1] != '')) {
                     console.log("control 2")
-                     temp[0] = String(parseFloat(temp[0]) * 1)
+                     temp[0] = String(parseFloat(temp[0]).toExponential())
                      text_elem.textContent = temp[0] + " " + temp[1] + " ";
                 } else {
-                    temp[0] = String(parseFloat(temp[0]) * 1);
-                    temp[2] = String(parseFloat(temp[2]) * 1);
+                    console.log("^^^^^^^^^^^^^^^")
+                    temp[0] = String(parseFloat(temp[0]).toExponential());
+                    temp[2] = String(parseFloat(temp[2]).toExponential());
                     text_elem.textContent = temp[0] + " " + temp[1] + " " + temp[2];
                 }
 
             } 
+            /*
             else if(text_elem.textContent.length > 25) {
                 text_elem.style.setProperty('font-size', '20px');
                 console.log("30 length")
@@ -82,10 +111,11 @@ function control_text_size(text_elem) {
                 // document.documentElement.style.setProperty("--primary-color", "purple");
                 text_elem.style.setProperty('font-size', '32px');
                 console.log("15 length")
-            } 
+            } */
             
             else {
                 text_elem.style.setProperty('font-size', '36px');
+                console.log("36px FONT")
             }
             
 }
@@ -161,7 +191,8 @@ function op_processor(mode_state, math_statement_obj, text, operator_char, opera
         let temp_list = text.split(' ')
 
         if((math_statement_obj['num2'] == '0') && (math_statement_obj['operation'] == "divide")) {
-            math_statement_obj['num1'] = String(operations[math_statement_obj.operation](parseFloat(math_statement_obj['num1']), parseFloat(math_statement_obj['num2'])));
+            //math_statement_obj['num1'] = String(operations[math_statement_obj.operation](parseFloat(math_statement_obj['num1']), parseFloat(math_statement_obj['num2'])));
+            math_statement_obj.num1 = String(operation_func(parseFloat(math_statement_obj.num1), parseFloat(math_statement_obj.num1), math_statement_obj.operation));
             math_statement_obj['answer'] = "";
             math_statement_obj['operator'] = "";
             math_statement_obj['operation'] = "";
@@ -169,7 +200,8 @@ function op_processor(mode_state, math_statement_obj, text, operator_char, opera
             text = "CAN'T DIVIDE A NUMBER BY ZER0";
         }
         else {
-            math_statement_obj['num1'] = String(operations[math_statement_obj.operation](parseInt(math_statement_obj['num1']), parseInt(math_statement_obj['num2'])));
+            //math_statement_obj['num1'] = String(operations[math_statement_obj.operation](parseInt(math_statement_obj['num1']), parseInt(math_statement_obj['num2'])));
+            math_statement_obj['num1'] = String(operation_func(parseFloat(math_statement_obj.num1), parseFloat(math_statement_obj.num1), math_statement_obj.operation));
             math_statement_obj['answer'] = math_statement_obj['num1'];
             math_statement_obj['operator'] = operator_char;
             math_statement_obj['operation'] = operation;
