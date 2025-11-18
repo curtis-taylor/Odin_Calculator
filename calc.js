@@ -73,26 +73,31 @@ function control_text_size(text_elem) {
             console.log(text_elem.textContent.length + "  leng")
             let temp = text_elem.textContent.split(' ');
 
-            if(text_elem.textContent.length > 15) {
+            console.log(temp.length);
+            console.log("&&&&&&&&&&&&&&&&&&&&")
+
+
+            if(text_elem.textContent.length > 19) {
                 text_elem.style.setProperty('font-size', '18px');
                 console.log("30 length")
                 
-                console.log(temp.length);
-                console.log("&&&&&&&&&&&&&&&&&&&&")
-
+                
                 if(temp.length == 1) {
-                    // text_elem.textContent = String(parseFloat(temp[0]) * 1);
-                    text_elem.textContent = String(parseFloat(temp[0]).toExponential());
+                    text_elem.textContent = String(parseFloat(temp[0]) * 1);
+                    // text_elem.textContent = String(parseFloat(temp[0]).toExponential());
                     console.log("control 1 " + text_elem.textContent);
                 
                 } else if((temp.length > 2) && (temp[1] != '')) {
                     console.log("control 2")
-                     temp[0] = String(parseFloat(temp[0]).toExponential())
+                     // temp[0] = String(parseFloat(temp[0]).toExponential())
+                     temp[0] = String(parseFloat(temp[0]) * 1)
                      text_elem.textContent = temp[0] + " " + temp[1] + " ";
                 } else {
                     console.log("^^^^^^^^^^^^^^^")
-                    temp[0] = String(parseFloat(temp[0]).toExponential());
-                    temp[2] = String(parseFloat(temp[2]).toExponential());
+                    //temp[0] = String(parseFloat(temp[0]).toExponential());
+                    //temp[2] = String(parseFloat(temp[2]).toExponential());
+                    temp[0] = String(parseFloat(temp[0]) * 1);
+                    temp[2] = String(parseFloat(temp[2]) * 1);
                     text_elem.textContent = temp[0] + " " + temp[1] + " " + temp[2];
                 }
 
@@ -160,9 +165,11 @@ function number_processor(operator_value, screen_text, num_ch) {
             return_obj.text = return_obj.num1 + " " + return_obj.operator + " " + return_obj.num2;
         } 
     } else {
-        return_obj.num1 = write_char(return_obj.text, num_ch)
-        return_obj.text = return_obj.num1;
-        console.log("num1 button one " + return_obj.num1);
+        if(!(return_obj.num1.includes('e'))) {
+            return_obj.num1 = write_char(return_obj.text, num_ch)
+            return_obj.text = return_obj.num1;
+            console.log("num1 button one " + return_obj.num1);
+        }
     }
 
     console.log(" obj " + return_obj.text);
