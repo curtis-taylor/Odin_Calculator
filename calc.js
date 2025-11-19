@@ -19,23 +19,26 @@ function divide(a, b) {
 
 function operation_func(a, b, op) {
 
+    console.log("zzzzzzzzz " + (a + b))
     let t = 0;
     switch(op) {
         case "add":
             //t = Number((a + b)).toFixed(10);
-            t = parseFloat((a + b))
+             t = parseFloat(a) + parseFloat(b);
+            console.log("op_func add add ")
+            console.log(b)
             break;
         case "minus":
             //t = Number((a - b)).toFixed(10);
-            t = parseFloat((a - b))
+            t = parseFloat(a) - parseFloat(b);
             break;
         case "multiply":
             // t = Number((a * b)).toFixed(10);
-            t = parseFloat((a * b))
+            t = parseFloat(a) * parseFloat(b);
             break;
         case "divide":
             // t = Number((a / b)).toFixed(10);
-            t = parseFloat((a / b))
+            t = parseFloat(a) / parseFloat(b);
             break;
     }   
 

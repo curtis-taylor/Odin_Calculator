@@ -575,7 +575,7 @@
                         console.dir(" x button " + Object.keys(math_statement).length)
                         console.log(" EQUALS ADD" + math_statement.num1 + math_statement.num2);
                         //let answer = String(operations[math_statement.operation](parseFloat(math_statement.num1), parseFloat(math_statement.num2)));
-                        let answer = String(operation_func(parseFloat(math_statement.num1), parseFloat(math_statement.num1), math_statement.operation));
+                        let answer = String(operation_func(parseFloat(math_statement.num1), parseFloat(math_statement.num2), math_statement.operation));
                         // let op_list = op_processor(mode_state_machine, math_statement, screen_text.textContent, "x", "multiply" )
                         screen_text.textContent = answer;
                         control_text_size(screen_text);
