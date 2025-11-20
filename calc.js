@@ -1,44 +1,50 @@
-/*
-function add(a, b) {
-    return a + b;
-}
 
-function subtract(a, b) {
-    return a - b;
-}
-
-function multiply(a, b) {
-    return a * b;
-}
-
-function divide(a, b) {
-    return a / b;
-}
-*/
 
 
 function operation_func(a, b, op) {
 
-    console.log("zzzzzzzzz " + (a + b))
+    //console.log("zzzzzzzzz " + (a + b))
     let t = 0;
     switch(op) {
         case "add":
-            //t = Number((a + b)).toFixed(10);
-             t = parseFloat(a) + parseFloat(b);
-            console.log("op_func add add ")
-            console.log(b)
+            if(a.length + b.length > 17) {
+                t = BigInt(a) + BigInt(b);
+                console.log("op_func add add ");
+                console.log(b);
+
+            } else {
+                t = parseFloat(a) + parseFloat(b);
+            }
+            
             break;
         case "minus":
             //t = Number((a - b)).toFixed(10);
-            t = parseFloat(a) - parseFloat(b);
+            
+            if(a.length + b.length > 17) {
+                t = BigInt(a) - BigInt(b);
+            } else {
+                t = parseFloat(a) - parseFloat(b);
+            }
             break;
         case "multiply":
             // t = Number((a * b)).toFixed(10);
-            t = parseFloat(a) * parseFloat(b);
+            
+            if(a.length + b.length > 17) {
+                t = BigInt(a) * BigInt(b);
+            } else {
+                t = parseFloat(a) * parseFloat(b);
+            }
+
             break;
         case "divide":
             // t = Number((a / b)).toFixed(10);
-            t = parseFloat(a) / parseFloat(b);
+            
+            if(a.length + b.length > 17) {
+                t = BigInt(a) / BigInt(b);
+            } else {
+                t = parseFloat(a) / parseFloat(b);
+            }
+
             break;
     }   
 
@@ -61,16 +67,6 @@ const operation = 'add';
 const result = operations[operation](5, 3);
 console.log(result); // Output: 8
 
-/*
-function trucate_number(text_elem) {
-   let temp = text_elem.textContent.split(' ');
-   console.log(temp);
-   console.log("&&&&&&&&&&&&&&&&&&&&")  
-   if(temp.length == 1) {
-     temp[0]
-   }
-
-} */
 
 function control_text_size(text_elem) {
             console.log(text_elem.textContent.length + "  leng")
@@ -82,25 +78,25 @@ function control_text_size(text_elem) {
 
             if(text_elem.textContent.length > 19) {
                 text_elem.style.setProperty('font-size', '18px');
-                console.log("30 length")
+                console.log("30 length " + parseFloat(temp[0]))
                 
                 
                 if(temp.length == 1) {
-                    text_elem.textContent = String(parseFloat(temp[0]) * 1);
-                    // text_elem.textContent = String(parseFloat(temp[0]).toExponential());
+                    //text_elem.textContent = String((parseFloat(temp[0])) * 1 );
+                    text_elem.textContent = String(parseFloat(temp[0]).toExponential());
                     console.log("control 1 " + text_elem.textContent);
                 
                 } else if((temp.length > 2) && (temp[1] != '')) {
                     console.log("control 2")
-                     // temp[0] = String(parseFloat(temp[0]).toExponential())
-                     temp[0] = String(parseFloat(temp[0]) * 1)
+                     temp[0] = String(parseFloat(temp[0]).toExponential())
+                     //temp[0] = String(parseFloat(temp[0]) * 1)
                      text_elem.textContent = temp[0] + " " + temp[1] + " ";
                 } else {
                     console.log("^^^^^^^^^^^^^^^")
-                    //temp[0] = String(parseFloat(temp[0]).toExponential());
-                    //temp[2] = String(parseFloat(temp[2]).toExponential());
-                    temp[0] = String(parseFloat(temp[0]) * 1);
-                    temp[2] = String(parseFloat(temp[2]) * 1);
+                    temp[0] = String(parseFloat(temp[0]).toExponential());
+                    temp[2] = String(parseFloat(temp[2]).toExponential());
+                    //temp[0] = String(parseFloat(temp[0]) * 1);
+                    //temp[2] = String(parseFloat(temp[2]) * 1);
                     text_elem.textContent = temp[0] + " " + temp[1] + " " + temp[2];
                 }
 
@@ -202,7 +198,7 @@ function op_processor(mode_state, math_statement_obj, text, operator_char, opera
 
         if((math_statement_obj['num2'] == '0') && (math_statement_obj['operation'] == "divide")) {
             //math_statement_obj['num1'] = String(operations[math_statement_obj.operation](parseFloat(math_statement_obj['num1']), parseFloat(math_statement_obj['num2'])));
-            math_statement_obj.num1 = String(operation_func(parseFloat(math_statement_obj.num1), parseFloat(math_statement_obj.num1), math_statement_obj.operation));
+            math_statement_obj.num1 = String(operation_func(parseFloat(math_statement_obj.num1), parseFloat(math_statement_obj.num2), math_statement_obj.operation));
             math_statement_obj['answer'] = "";
             math_statement_obj['operator'] = "";
             math_statement_obj['operation'] = "";
@@ -211,7 +207,7 @@ function op_processor(mode_state, math_statement_obj, text, operator_char, opera
         }
         else {
             //math_statement_obj['num1'] = String(operations[math_statement_obj.operation](parseInt(math_statement_obj['num1']), parseInt(math_statement_obj['num2'])));
-            math_statement_obj['num1'] = String(operation_func(parseFloat(math_statement_obj.num1), parseFloat(math_statement_obj.num1), math_statement_obj.operation));
+            math_statement_obj['num1'] = String(operation_func(parseFloat(math_statement_obj.num1), parseFloat(math_statement_obj.num2), math_statement_obj.operation));
             math_statement_obj['answer'] = math_statement_obj['num1'];
             math_statement_obj['operator'] = operator_char;
             math_statement_obj['operation'] = operation;

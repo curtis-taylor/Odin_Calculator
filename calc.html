@@ -183,6 +183,7 @@
 
                 let temp_list = number_processor( math_statement.operator, screen_text.textContent, "2");
                 screen_text.textContent = temp_list[0];
+                control_text_size(screen_text);
                 math_statement.num1 = temp_list[1];
                 math_statement.num2 = temp_list[2];
         });
@@ -196,6 +197,7 @@
 
                 let temp_list = number_processor( math_statement.operator, screen_text.textContent, "3");
                 screen_text.textContent = temp_list[0];
+                control_text_size(screen_text);
                 math_statement.num1 = temp_list[1];
                 math_statement.num2 = temp_list[2];
 
@@ -210,6 +212,7 @@
 
                 let temp_list = number_processor( math_statement.operator, screen_text.textContent, "4");
                 screen_text.textContent = temp_list[0];
+                control_text_size(screen_text);
                 console.log(temp_list[0] + " HH");
                 math_statement.num1 = temp_list[1];
                 math_statement.num2 = temp_list[2];
@@ -225,6 +228,7 @@
 
                 let temp_list = number_processor( math_statement.operator, screen_text.textContent, "5");
                 screen_text.textContent = temp_list[0];
+                control_text_size(screen_text);
                 math_statement.num1 = temp_list[1];
                 math_statement.num2 = temp_list[2];
         });
@@ -238,6 +242,7 @@
 
                 let temp_list = number_processor( math_statement.operator, screen_text.textContent, "6");
                 screen_text.textContent = temp_list[0];
+                control_text_size(screen_text);
                 math_statement.num1 = temp_list[1];
                 math_statement.num2 = temp_list[2];
         });
@@ -251,6 +256,7 @@
 
                 let temp_list = number_processor( math_statement.operator, screen_text.textContent, "7");
                 screen_text.textContent = temp_list[0];
+                control_text_size(screen_text);
                 math_statement.num1 = temp_list[1];
                 math_statement.num2 = temp_list[2];
         });
@@ -264,6 +270,7 @@
 
                 let temp_list = number_processor( math_statement.operator, screen_text.textContent, "8");
                 screen_text.textContent = temp_list[0];
+                control_text_size(screen_text);
                 math_statement.num1 = temp_list[1];
                 math_statement.num2 = temp_list[2];
         });
@@ -277,6 +284,7 @@
 
                 let temp_list = number_processor( math_statement.operator, screen_text.textContent, "9");
                 screen_text.textContent = temp_list[0];
+                control_text_size(screen_text);
                 math_statement.num1 = temp_list[1];
                 math_statement.num2 = temp_list[2];
         });
@@ -297,7 +305,7 @@
 
                     let temp = screen_text.textContent.split(" ");
                     math_statement.num2 = temp[2];
-                    console.log("num2 button one " + math_statement.num1 + " " + math_statement.num2);
+                    // console.log("num2 button one " + math_statement.num1 + " " + math_statement.num2);
                     math_statement.num2 = write_char(math_statement.num2, "0")
                     temp[2] = math_statement.num2;
                     screen_text.textContent = temp.join(' ');
@@ -345,54 +353,7 @@
                    
               }
 
-                console.log("add " + math_statement.num2)
-                            
-              
-                /*
-                if(operator_entry_mode) {
-                   console.log("roqqq " + Object.keys(math_statement).length );
-                   if(Object.keys(math_statement).length < 2) {
-                        console.log("plus") 
-                        math_statement['num1'] = screen_text.textContent;
-                        math_statement['operator'] = "+"; 
-                        math_statement['operation'] = 'add';
-
-                        operator_entry_mode = false;
-                        mode_state_machine.num1 = true;
-                        mode_state_machine.operator_can_be_entered = false;
-                        // let mode_state_machine = {num1:true, operator:false, num2:false, num1_decimal_used:false, num2_decimal_used:false};
-                       // math_statement_list.push(screen_text.textContent);
-                       // math_statement_list.push(" + ")
-                        
-                        console.log("+++")
-                       
-                        screen_text.textContent = screen_text.textContent + " + ";            
-                        //console.log(math_statement_list);
-                   } else {
-                        let temp_list = screen_text.textContent.split(' ')
-                        console.log(temp_list);
-                        console.log("***")
-                        math_statement['num2'] = temp_list[2];
-
-                        math_statement['num1'] = operations[math_statement.operation](parseFloat(math_statement['num1']), parseFloat(math_statement['num2']));
-                        math_statement['operator'] = "+";
-                        math_statement['add'];
-                        operator_entry_mode = false;
-                        
-                        //math_statement_list[0] = operations['add'](parseFloat(math_statement_list[0]), parseFloat(temp_list[2]));
-                        // math_statement_list[1] ="+";
-                        
-                        
-                        screen_text.textContent = String(math_statement['num1']) + " + ";
-                        // math_statement['num2'] = 0;
-                        delete math_statement.num2;
-                        //console.log(math_statement_list);
-                        
-                    }
-                }
-               
-               */
-               
+                console.log("add " + math_statement.num2)         
 
         });
 
@@ -474,18 +435,12 @@
                 e.preventDefault();
                 //e.stopPropagation();
                 e.stopImmediatePropagation();
-                console.log("roc");
-                // square_test(parseInt(slider_text.textContent));
-                
-               // mode_state_machine.operator_can_be_entered = true;
 
                 screen_text.textContent = "0";
 
                 math_statement = {num1:'0', num2:'', operator:'', operation:'', answer:''};
                 mode_state_machine = {num1:true, operator_can_be_entered:false, num2:false };
                 
-                //operator_entry_mode = false;
-                //operator_entry_mode = false;
                 control_text_size(screen_text);
                 
         });
@@ -531,8 +486,6 @@
                     screen_text.textContent = write_char(screen_text.textContent, ".");
                     math_statement.num1 = screen_text.textContent;
                     control_text_size(screen_text);
-
-                    console.log("nov 14")
                    } 
                 }
                 else if(math_statement.num1 == '0') {
@@ -559,7 +512,7 @@
                    
                    if((math_statement.num2 == '0') && (math_statement.operation == 'divide')) {
                         // let answer = String(operations[math_statement.operation](parseFloat(math_statement.num1), parseFloat(math_statement.num2)));
-                        let answer = String(operation_func(parseFloat(math_statement.num1), parseFloat(math_statement.num1), math_statement.operation));
+                        let answer = String(operation_func(math_statement.num1, math_statement.num2, math_statement.operation));
                         
                         // let op_list = op_processor(mode_state_machine, math_statement, screen_text.textContent, "x", "multiply" )
                         screen_text.textContent = "CAN'T DIVIDE A NUMBER BY ZER0";
@@ -575,7 +528,7 @@
                         console.dir(" x button " + Object.keys(math_statement).length)
                         console.log(" EQUALS ADD" + math_statement.num1 + math_statement.num2);
                         //let answer = String(operations[math_statement.operation](parseFloat(math_statement.num1), parseFloat(math_statement.num2)));
-                        let answer = String(operation_func(parseFloat(math_statement.num1), parseFloat(math_statement.num2), math_statement.operation));
+                        let answer = String(operation_func(math_statement.num1, math_statement.num2, math_statement.operation));
                         // let op_list = op_processor(mode_state_machine, math_statement, screen_text.textContent, "x", "multiply" )
                         screen_text.textContent = answer;
                         control_text_size(screen_text);
