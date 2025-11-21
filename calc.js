@@ -2,11 +2,10 @@
 
 
 function operation_func(a, b, op) {
-
-    //console.log("zzzzzzzzz " + (a + b))
     let t = 0;
     switch(op) {
         case "add":
+            /*
             if(a.length + b.length > 17) {
                 t = BigInt(a) + BigInt(b);
                 console.log("op_func add add ");
@@ -14,37 +13,21 @@ function operation_func(a, b, op) {
 
             } else {
                 t = parseFloat(a) + parseFloat(b);
-            }
+            } */
             
+            t = parseFloat(a) + parseFloat(b);
             break;
         case "minus":
-            //t = Number((a - b)).toFixed(10);
             
-            if(a.length + b.length > 17) {
-                t = BigInt(a) - BigInt(b);
-            } else {
-                t = parseFloat(a) - parseFloat(b);
-            }
+            t = parseFloat(a) - parseFloat(b);
             break;
         case "multiply":
-            // t = Number((a * b)).toFixed(10);
             
-            if(a.length + b.length > 17) {
-                t = BigInt(a) * BigInt(b);
-            } else {
-                t = parseFloat(a) * parseFloat(b);
-            }
-
+            t = parseFloat(a) * parseFloat(b);
             break;
         case "divide":
-            // t = Number((a / b)).toFixed(10);
-            
-            if(a.length + b.length > 17) {
-                t = BigInt(a) / BigInt(b);
-            } else {
-                t = parseFloat(a) / parseFloat(b);
-            }
 
+            t = parseFloat(a) / parseFloat(b);
             break;
     }   
 
@@ -78,7 +61,7 @@ function control_text_size(text_elem) {
 
             if(text_elem.textContent.length > 19) {
                 text_elem.style.setProperty('font-size', '18px');
-                console.log("30 length " + parseFloat(temp[0]))
+                console.log("30 length " + text_elem.textContent)
                 
                 
                 if(temp.length == 1) {
@@ -86,13 +69,13 @@ function control_text_size(text_elem) {
                     text_elem.textContent = String(parseFloat(temp[0]).toExponential());
                     console.log("control 1 " + text_elem.textContent);
                 
-                } else if((temp.length > 2) && (temp[1] != '')) {
+                } else if((temp[2] == '') && (temp[1] != '')) {
                     console.log("control 2")
                      temp[0] = String(parseFloat(temp[0]).toExponential())
                      //temp[0] = String(parseFloat(temp[0]) * 1)
                      text_elem.textContent = temp[0] + " " + temp[1] + " ";
                 } else {
-                    console.log("^^^^^^^^^^^^^^^")
+                    console.log("^^^^^^^^^^^^^^^" + temp[2])
                     temp[0] = String(parseFloat(temp[0]).toExponential());
                     temp[2] = String(parseFloat(temp[2]).toExponential());
                     //temp[0] = String(parseFloat(temp[0]) * 1);
@@ -121,6 +104,8 @@ function control_text_size(text_elem) {
                 text_elem.style.setProperty('font-size', '36px');
                 console.log("36px FONT")
             }
+
+           console.log("WRITE *** " + text_elem.textContent) 
             
 }
 
