@@ -52,60 +52,65 @@ console.log(result); // Output: 8
 
 
 function control_text_size(text_elem) {
-            console.log(text_elem.textContent.length + "  leng")
-            let temp = text_elem.textContent.split(' ');
 
-            console.log(temp.length);
-            console.log("&&&&&&&&&&&&&&&&&&&&")
+       console.log(typeof(text_elem))
+        console.log(text_elem.textContent)
+        let temp = text_elem.textContent.split(' ');
 
+        console.log(temp.length);
+        console.log("&&&&&&&&&&&&&&&&&&&&")
 
-            if(text_elem.textContent.length > 19) {
-                text_elem.style.setProperty('font-size', '18px');
-                console.log("30 length " + text_elem.textContent)
-                
-                
-                if(temp.length == 1) {
-                    //text_elem.textContent = String((parseFloat(temp[0])) * 1 );
-                    text_elem.textContent = String(parseFloat(temp[0]).toExponential());
-                    console.log("control 1 " + text_elem.textContent);
-                
-                } else if((temp[2] == '') && (temp[1] != '')) {
-                    console.log("control 2")
-                     temp[0] = String(parseFloat(temp[0]).toExponential())
-                     //temp[0] = String(parseFloat(temp[0]) * 1)
-                     text_elem.textContent = temp[0] + " " + temp[1] + " ";
-                } else {
-                    console.log("^^^^^^^^^^^^^^^" + temp[2])
-                    temp[0] = String(parseFloat(temp[0]).toExponential());
-                    temp[2] = String(parseFloat(temp[2]).toExponential());
-                    //temp[0] = String(parseFloat(temp[0]) * 1);
-                    //temp[2] = String(parseFloat(temp[2]) * 1);
-                    text_elem.textContent = temp[0] + " " + temp[1] + " " + temp[2];
-                }
-
-            } 
-            /*
-            else if(text_elem.textContent.length > 25) {
-                text_elem.style.setProperty('font-size', '20px');
-                console.log("30 length")
-            } 
-            else if(text_elem.textContent.length > 20) {
-                text_elem.style.setProperty('font-size', '28px');
-                console.log("25 length")
-            } 
-            else if(text_elem.textContent.length > 15) {
-                console.log("0000")
-                // document.documentElement.style.setProperty("--primary-color", "purple");
-                text_elem.style.setProperty('font-size', '32px');
-                console.log("15 length")
-            } */
+        if(text_elem.textContent.includes('BY ZER0')) { 
+            console.log("ZZZZZZZZZZZZZZZZ");
+            text_elem.style.setProperty('font-size', '30px');
+        }
+        else if(text_elem.textContent.length > 19) {
+            text_elem.style.setProperty('font-size', '18px');
+            console.log("30 length " + text_elem.textContent)
             
-            else {
-                text_elem.style.setProperty('font-size', '36px');
-                console.log("36px FONT")
+            
+            if(temp.length == 1) {
+                //text_elem.textContent = String((parseFloat(temp[0])) * 1 );
+                text_elem.textContent = String(parseFloat(temp[0]).toExponential());
+                console.log("control 1 " + text_elem.textContent);
+            
+            } else if((temp[2] == '') && (temp[1] != '')) {
+                console.log("control 2")
+                    temp[0] = String(parseFloat(temp[0]).toExponential())
+                    //temp[0] = String(parseFloat(temp[0]) * 1)
+                    text_elem.textContent = temp[0] + " " + temp[1] + " ";
+            } else {
+                console.log("^^^^^^^^^^^^^^^" + temp[2])
+                temp[0] = String(parseFloat(temp[0]).toExponential());
+                temp[2] = String(parseFloat(temp[2]).toExponential());
+                //temp[0] = String(parseFloat(temp[0]) * 1);
+                //temp[2] = String(parseFloat(temp[2]) * 1);
+                text_elem.textContent = temp[0] + " " + temp[1] + " " + temp[2];
             }
 
-           console.log("WRITE *** " + text_elem.textContent) 
+        } 
+        /*
+        else if(text_elem.textContent.length > 25) {
+            text_elem.style.setProperty('font-size', '20px');
+            console.log("30 length")
+        } 
+        else if(text_elem.textContent.length > 20) {
+            text_elem.style.setProperty('font-size', '28px');
+            console.log("25 length")
+        } 
+        else if(text_elem.textContent.length > 15) {
+            console.log("0000")
+            // document.documentElement.style.setProperty("--primary-color", "purple");
+            text_elem.style.setProperty('font-size', '32px');
+            console.log("15 length")
+        } */
+        
+        else {
+            text_elem.style.setProperty('font-size', '36px');
+            console.log("36px FONT")
+        }
+
+        console.log("WRITE *** " + text_elem.textContent) 
             
 }
 

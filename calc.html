@@ -79,6 +79,16 @@
 
                 let temp = [math_statement.num1, math_statement.operator, math_statement.num2]
 
+                if(screen_text.textContent.includes('BY ZERO')) {
+
+                    screen_text.textContent = "0";
+
+                    math_statement = {num1:'0', num2:'', operator:'', operation:'', answer:''};
+                    mode_state_machine = {num1:true, operator_can_be_entered:false, num2:false };
+                
+                    control_text_size(screen_text);
+
+                }
                 if(screen_text.textContent != "0") {
                     console.log("roc22");
                     if((math_statement.num2.length > 0) && (!(math_statement.num2.includes('e'))) ){
