@@ -37,6 +37,14 @@
     justify-items: center;
 }
 
+button:active {
+    box-shadow: 5px 5px 7px rgba(0, 0, 0, 0.0); 
+}
+
+button {
+    box-shadow: 5px 5px 7px rgba(0, 0, 0, 0.6);
+}
+
 .button_container {
     display: flex;
     flex-wrap: wrap;
@@ -63,3 +71,4 @@
     border-radius: 15px;
     border: 2px solid red;
 }
+

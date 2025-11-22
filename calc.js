@@ -112,7 +112,7 @@ function control_text_size(text_elem) {
 function write_char(original_text, num_ch) {
 
     if(num_ch == '.') {
-        console.log("<>< " + " " + num_ch + " " + (!(original_text.includes('.'))))
+        // console.log("<>< " + " " + num_ch + " " + (!(original_text.includes('.'))))
         if(!(original_text.includes('.'))) {
            
            original_text = original_text + num_ch;
