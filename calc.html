@@ -160,6 +160,7 @@
 
                 //screen_text.textContent = write_char(screen_text.textContent, "1")
 
+                console.log(screen_text.textContent + " #$$")
 
                 if(!(screen_text.textContent.includes('ZERO'))) {
                     mode_state_machine.operator_can_be_entered = true;
@@ -259,13 +260,15 @@
                 e.stopImmediatePropagation();
               
                 
-                mode_state_machine.operator_can_be_entered = true;
+                if(!(screen_text.textContent.includes('ZERO'))) {
+                    mode_state_machine.operator_can_be_entered = true;
 
-                let temp_list = number_processor( math_statement.operator, screen_text.textContent, "5");
-                screen_text.textContent = temp_list[0];
-                control_text_size(screen_text);
-                math_statement.num1 = temp_list[1];
-                math_statement.num2 = temp_list[2];
+                    let temp_list = number_processor( math_statement.operator, screen_text.textContent, "5");
+                    screen_text.textContent = temp_list[0];
+                    control_text_size(screen_text);
+                    math_statement.num1 = temp_list[1];
+                    math_statement.num2 = temp_list[2];
+                }
         });
 
         button6.addEventListener("click", function(e) {
@@ -273,13 +276,15 @@
                 //e.stopPropagation();
                 e.stopImmediatePropagation();
               
-                mode_state_machine.operator_can_be_entered = true;
+               if(!(screen_text.textContent.includes('ZERO'))) {
+                    mode_state_machine.operator_can_be_entered = true;
 
-                let temp_list = number_processor( math_statement.operator, screen_text.textContent, "6");
-                screen_text.textContent = temp_list[0];
-                control_text_size(screen_text);
-                math_statement.num1 = temp_list[1];
-                math_statement.num2 = temp_list[2];
+                    let temp_list = number_processor( math_statement.operator, screen_text.textContent, "6");
+                    screen_text.textContent = temp_list[0];
+                    control_text_size(screen_text);
+                    math_statement.num1 = temp_list[1];
+                    math_statement.num2 = temp_list[2];
+                }
         });
 
         button7.addEventListener("click", function(e) {
@@ -287,13 +292,15 @@
                 //e.stopPropagation();
                 e.stopImmediatePropagation();
               
-                mode_state_machine.operator_can_be_entered = true;
+                if(!(screen_text.textContent.includes('ZERO'))) {
+                    mode_state_machine.operator_can_be_entered = true;
 
-                let temp_list = number_processor( math_statement.operator, screen_text.textContent, "7");
-                screen_text.textContent = temp_list[0];
-                control_text_size(screen_text);
-                math_statement.num1 = temp_list[1];
-                math_statement.num2 = temp_list[2];
+                    let temp_list = number_processor( math_statement.operator, screen_text.textContent, "7");
+                    screen_text.textContent = temp_list[0];
+                    control_text_size(screen_text);
+                    math_statement.num1 = temp_list[1];
+                    math_statement.num2 = temp_list[2];
+                }
         });
 
         button8.addEventListener("click", function(e) {
@@ -301,13 +308,15 @@
                 //e.stopPropagation();
                 e.stopImmediatePropagation();
               
-                mode_state_machine.operator_can_be_entered = true;
+                if(!(screen_text.textContent.includes('ZERO'))) {
+                    mode_state_machine.operator_can_be_entered = true;
 
-                let temp_list = number_processor( math_statement.operator, screen_text.textContent, "8");
-                screen_text.textContent = temp_list[0];
-                control_text_size(screen_text);
-                math_statement.num1 = temp_list[1];
-                math_statement.num2 = temp_list[2];
+                    let temp_list = number_processor( math_statement.operator, screen_text.textContent, "8");
+                    screen_text.textContent = temp_list[0];
+                    control_text_size(screen_text);
+                    math_statement.num1 = temp_list[1];
+                    math_statement.num2 = temp_list[2];
+                }
         });
 
         button9.addEventListener("click", function(e) {
@@ -315,13 +324,15 @@
                 //e.stopPropagation();
                 e.stopImmediatePropagation();
               
-                mode_state_machine.operator_can_be_entered = true;
+                if(!(screen_text.textContent.includes('ZERO'))) {
+                    mode_state_machine.operator_can_be_entered = true;
 
-                let temp_list = number_processor( math_statement.operator, screen_text.textContent, "9");
-                screen_text.textContent = temp_list[0];
-                control_text_size(screen_text);
-                math_statement.num1 = temp_list[1];
-                math_statement.num2 = temp_list[2];
+                    let temp_list = number_processor( math_statement.operator, screen_text.textContent, "9");
+                    screen_text.textContent = temp_list[0];
+                    control_text_size(screen_text);
+                    math_statement.num1 = temp_list[1];
+                    math_statement.num2 = temp_list[2];
+                }
         });
 
         
@@ -332,7 +343,17 @@
                 e.stopImmediatePropagation();
                 console.log("roc");
                 
+                if(!(screen_text.textContent.includes('ZERO'))) {
+                    mode_state_machine.operator_can_be_entered = true;
+
+                    let temp_list = number_processor( math_statement.operator, screen_text.textContent, "0");
+                    screen_text.textContent = temp_list[0];
+                    control_text_size(screen_text);
+                    math_statement.num1 = temp_list[1];
+                    math_statement.num2 = temp_list[2];
+                }
                 
+                /*
                 mode_state_machine.operator_can_be_entered = true;
     
 
@@ -354,7 +375,7 @@
                     screen_text.textContent = math_statement.num1;
                     control_text_size(screen_text);
                     console.log("num1 button one " + math_statement.num1);
-                }
+                } */
 
         });
 
@@ -475,14 +496,14 @@
         });
 
         decimal_button.addEventListener("click", function(e) {
-                e.preventDefault();
-                //e.stopPropagation();
-                e.stopImmediatePropagation();
-                //console.log("roc " + (math_statement['operator'] != '') + " " + (math_statement['num2'] != ''));
-                //console.log(math_statement['operator']);
+            e.preventDefault();
+            //e.stopPropagation();
+            e.stopImmediatePropagation();
+            //console.log("roc " + (math_statement['operator'] != '') + " " + (math_statement['num2'] != ''));
+            //console.log(math_statement['operator']);
     
 
-
+            if(!(screen_text.textContent.includes('ZERO'))) {
                 if((math_statement['operator'] != '') && (math_statement['num2'] != '')) {
                     console.log("decimal insert into num2")
                     console.log("1st " + (!(math_statement['num2']).includes('.')))
@@ -539,6 +560,7 @@
 
                     console.log("decimal insert into num1")
                 }
+            }
                 
         });
 
@@ -554,7 +576,7 @@
                         let answer = String(operation_func(math_statement.num1, math_statement.num2, math_statement.operation));
                         
                         // let op_list = op_processor(mode_state_machine, math_statement, screen_text.textContent, "x", "multiply" )
-                        screen_text.textContent = "CAN'T DIVIDE A NUMBER BY ZER0";
+                        screen_text.textContent = "CAN'T DIVIDE A NUMBER BY ZERO";
                         control_text_size(screen_text);
                         math_statement.num1 = "0";
                         math_statement.operator = '';

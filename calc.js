@@ -60,7 +60,7 @@ function control_text_size(text_elem) {
         console.log(temp.length);
         console.log("&&&&&&&&&&&&&&&&&&&&")
 
-        if(text_elem.textContent.includes('BY ZER0')) { 
+        if(text_elem.textContent.includes('BY ZERO')) { 
             console.log("ZZZZZZZZZZZZZZZZ");
             text_elem.style.setProperty('font-size', '30px');
         }
@@ -193,7 +193,7 @@ function op_processor(mode_state, math_statement_obj, text, operator_char, opera
             math_statement_obj['operator'] = "";
             math_statement_obj['operation'] = "";
             mode_state.operator_can_be_entered = false;
-            text = "CAN'T DIVIDE A NUMBER BY ZER0";
+            text = "CAN'T DIVIDE A NUMBER BY ZERO";
         }
         else {
             //math_statement_obj['num1'] = String(operations[math_statement_obj.operation](parseInt(math_statement_obj['num1']), parseInt(math_statement_obj['num2'])));
