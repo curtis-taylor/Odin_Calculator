@@ -63,9 +63,11 @@
         const back_button = document.querySelector('#back');
 
         let math_statement = {num1:'0', num2:'', operator:'', operation:'', answer:''};
+        
+        //# ONLY  USE 'operator_can_be_entered' property of mode-state_machine
         let mode_state_machine = {num1:true, operator_can_be_entered:false, num2:false};
-        let operator_entry_mode = false;
-
+        
+        //let operator_entry_mode = false;
         
         
         back_button.addEventListener("click", function(e) {
@@ -125,7 +127,7 @@
                 }
 
                 //mode_state_machine.num1 = false;
-                //mode_state_machine.operator_can_be_entered = true;
+                mode_state_machine.operator_can_be_entered = true;
 
                 //screen_text.textContent = write_char(screen_text.textContent, "1")
                 
@@ -153,31 +155,48 @@
                 //e.stopPropagation();
                 e.stopImmediatePropagation();
                 
-                mode_state_machine.num1 = false;
-                mode_state_machine.operator_can_be_entered = true;
+                //mode_state_machine.num1 = false;
+                
 
                 //screen_text.textContent = write_char(screen_text.textContent, "1")
-                
 
-                if(math_statement.operator != '') {
-                    let temp = screen_text.textContent.split(" ");
-                    math_statement.num2 = temp[2];
-                
-                    console.log("num2 button one " + math_statement.num1 + " " + math_statement.operator + " " + math_statement.num2);
-                    if(math_statement.num2 != '0') {
-                        console.log("11%% " + math_statement.operator);
-                        math_statement.num2 = write_char(math_statement.num2, "1");
-                        screen_text.textContent = math_statement.num1 + " " + math_statement.operator + " " + math_statement.num2;
-                        console.log(math_statement.num2)
-                        console.log("VVVVVVVVVVVVVVVVV " + screen_text.textContent)
-                        control_text_size(screen_text);
-                    } 
-                } else {
-                    math_statement.num1 = write_char(screen_text.textContent, "1");
-                    screen_text.textContent = math_statement.num1;
+
+                if(!(screen_text.textContent.includes('ZERO'))) {
+                    mode_state_machine.operator_can_be_entered = true;
+
+                    let temp_list = number_processor( math_statement.operator, screen_text.textContent, "1");
+                    screen_text.textContent = temp_list[0];
                     control_text_size(screen_text);
-                    console.log("num1 button one " + math_statement.num1);
+                    math_statement.num1 = temp_list[1];
+                    math_statement.num2 = temp_list[2];
                 }
+                
+                /*
+                if(!(screen_text.textContent.includes('ZERO'))) {
+
+                    mode_state_machine.operator_can_be_entered = true;
+
+                    if(math_statement.operator != '') {
+                        let temp = screen_text.textContent.split(" ");
+                        math_statement.num2 = temp[2];
+                    
+                        console.log("num2 button one " + math_statement.num1 + " " + math_statement.operator + " " + math_statement.num2);
+                        if(math_statement.num2 != '0') {
+                            console.log("11%% " + math_statement.operator);
+                            math_statement.num2 = write_char(math_statement.num2, "1");
+                            screen_text.textContent = math_statement.num1 + " " + math_statement.operator + " " + math_statement.num2;
+                            console.log(math_statement.num2)
+                            console.log("VVVVVVVVVVVVVVVVV " + screen_text.textContent)
+                            control_text_size(screen_text);
+                        } 
+                    } else {
+                        math_statement.num1 = write_char(screen_text.textContent, "1");
+                        screen_text.textContent = math_statement.num1;
+                        control_text_size(screen_text);
+                        console.log("num1 button one " + math_statement.num1);
+                    }
+
+            } */
                
             });
 
@@ -188,13 +207,15 @@
                 console.log("roc");
                 // square_test(parseInt(slider_text.textContent));
                 
-                mode_state_machine.operator_can_be_entered = true;
+                if(!(screen_text.textContent.includes('ZERO'))) {
+                    mode_state_machine.operator_can_be_entered = true;
 
-                let temp_list = number_processor( math_statement.operator, screen_text.textContent, "2");
-                screen_text.textContent = temp_list[0];
-                control_text_size(screen_text);
-                math_statement.num1 = temp_list[1];
-                math_statement.num2 = temp_list[2];
+                    let temp_list = number_processor( math_statement.operator, screen_text.textContent, "2");
+                    screen_text.textContent = temp_list[0];
+                    control_text_size(screen_text);
+                    math_statement.num1 = temp_list[1];
+                    math_statement.num2 = temp_list[2];
+                }
         });
 
         button3.addEventListener("click", function(e) {
@@ -202,13 +223,15 @@
                 //e.stopPropagation();
                 e.stopImmediatePropagation();
               
-                mode_state_machine.operator_can_be_entered = true;
+                if(!(screen_text.textContent.includes('ZERO'))) {
+                    mode_state_machine.operator_can_be_entered = true;
 
-                let temp_list = number_processor( math_statement.operator, screen_text.textContent, "3");
-                screen_text.textContent = temp_list[0];
-                control_text_size(screen_text);
-                math_statement.num1 = temp_list[1];
-                math_statement.num2 = temp_list[2];
+                    let temp_list = number_processor( math_statement.operator, screen_text.textContent, "3");
+                    screen_text.textContent = temp_list[0];
+                    control_text_size(screen_text);
+                    math_statement.num1 = temp_list[1];
+                    math_statement.num2 = temp_list[2];
+                }
 
         });
 
@@ -216,15 +239,18 @@
                 e.preventDefault();
                 //e.stopPropagation();
                 e.stopImmediatePropagation();
-              
-                mode_state_machine.operator_can_be_entered = true;
 
-                let temp_list = number_processor( math_statement.operator, screen_text.textContent, "4");
-                screen_text.textContent = temp_list[0];
-                control_text_size(screen_text);
-                console.log(temp_list[0] + " HH");
-                math_statement.num1 = temp_list[1];
-                math_statement.num2 = temp_list[2];
+                console.log(!(screen_text.textContent.includes('ZERO')));
+              
+                if(!(screen_text.textContent.includes('ZERO'))) {
+                    mode_state_machine.operator_can_be_entered = true;
+
+                    let temp_list = number_processor( math_statement.operator, screen_text.textContent, "4");
+                    screen_text.textContent = temp_list[0];
+                    control_text_size(screen_text);
+                    math_statement.num1 = temp_list[1];
+                    math_statement.num2 = temp_list[2];
+                }
         });
 
         button5.addEventListener("click", function(e) {
