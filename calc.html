@@ -154,13 +154,6 @@
                 e.preventDefault();
                 //e.stopPropagation();
                 e.stopImmediatePropagation();
-                
-                //mode_state_machine.num1 = false;
-                
-
-                //screen_text.textContent = write_char(screen_text.textContent, "1")
-
-                console.log(screen_text.textContent + " #$$")
 
                 if(!(screen_text.textContent.includes('ZERO'))) {
                     mode_state_machine.operator_can_be_entered = true;
@@ -172,32 +165,6 @@
                     math_statement.num2 = temp_list[2];
                 }
                 
-                /*
-                if(!(screen_text.textContent.includes('ZERO'))) {
-
-                    mode_state_machine.operator_can_be_entered = true;
-
-                    if(math_statement.operator != '') {
-                        let temp = screen_text.textContent.split(" ");
-                        math_statement.num2 = temp[2];
-                    
-                        console.log("num2 button one " + math_statement.num1 + " " + math_statement.operator + " " + math_statement.num2);
-                        if(math_statement.num2 != '0') {
-                            console.log("11%% " + math_statement.operator);
-                            math_statement.num2 = write_char(math_statement.num2, "1");
-                            screen_text.textContent = math_statement.num1 + " " + math_statement.operator + " " + math_statement.num2;
-                            console.log(math_statement.num2)
-                            console.log("VVVVVVVVVVVVVVVVV " + screen_text.textContent)
-                            control_text_size(screen_text);
-                        } 
-                    } else {
-                        math_statement.num1 = write_char(screen_text.textContent, "1");
-                        screen_text.textContent = math_statement.num1;
-                        control_text_size(screen_text);
-                        console.log("num1 button one " + math_statement.num1);
-                    }
-
-            } */
                
             });
 
@@ -205,9 +172,7 @@
                 e.preventDefault();
                 //e.stopPropagation();
                 e.stopImmediatePropagation();
-                console.log("roc");
-                // square_test(parseInt(slider_text.textContent));
-                
+        
                 if(!(screen_text.textContent.includes('ZERO'))) {
                     mode_state_machine.operator_can_be_entered = true;
 
@@ -240,8 +205,6 @@
                 e.preventDefault();
                 //e.stopPropagation();
                 e.stopImmediatePropagation();
-
-                console.log(!(screen_text.textContent.includes('ZERO')));
               
                 if(!(screen_text.textContent.includes('ZERO'))) {
                     mode_state_machine.operator_can_be_entered = true;
@@ -403,8 +366,7 @@
                    
               }
 
-                //console.log("add " + math_statement.num2)         
-
+                
         });
 
         minus_button.addEventListener("click", function(e) {
@@ -499,17 +461,15 @@
             e.preventDefault();
             //e.stopPropagation();
             e.stopImmediatePropagation();
-            //console.log("roc " + (math_statement['operator'] != '') + " " + (math_statement['num2'] != ''));
-            //console.log(math_statement['operator']);
     
 
             if(!(screen_text.textContent.includes('ZERO'))) {
                 if((math_statement['operator'] != '') && (math_statement['num2'] != '')) {
-                    console.log("decimal insert into num2")
-                    console.log("1st " + (!(math_statement['num2']).includes('.')))
+                    //console.log("decimal insert into num2")
+                    //console.log("1st " + (!(math_statement['num2']).includes('.')))
                     if(!(math_statement['num2']).includes('.')) {
                         math_statement.num2 = write_char(math_statement.num2, ".");
-                        console.log('.......... ' + math_statement.num2);
+                        //console.log('.......... ' + math_statement.num2);
                         
                         screen_text.textContent = math_statement.num1 + " " + math_statement.operator + " " + math_statement.num2;
                         
@@ -521,7 +481,7 @@
                     
                 } 
                 else if((math_statement['operator'] != '')) {
-                    console.log("decimal first char for num2");
+                    // console.log("decimal first char for num2");
 
                     screen_text.textContent = screen_text.textContent + "0.";
                     
@@ -530,22 +490,14 @@
                 }
                 //# Nov 14 2025
                 else if(!(math_statement['num1']).includes('.')) {
-                   // if(!(math_statement['num2']).includes('.')) { }
-                   console.log("++++++++ " + math_statement.answer)
+                  
                    if(math_statement.answer == '') {
                     screen_text.textContent = write_char(screen_text.textContent, ".");
                     math_statement.num1 = screen_text.textContent;
                     control_text_size(screen_text);
                    } 
                 }
-               /* else if(math_statement.num1 == '0') {
-                    screen_text.textContent = '0.';
-                    math_statement.num1 = '0.';
-
-                    control_text_size(screen_text);
-
-                    console.log("math_statement.num1 = 0 ");
-                } */
+              
                 else {
 
                     if(math_statement.num1 == '0') {
@@ -554,11 +506,8 @@
 
                         control_text_size(screen_text);
 
-                        console.log("math_statement.num1 = 0 ");
                     }
-
-
-                    console.log("decimal insert into num1")
+             
                 }
             }
                 
