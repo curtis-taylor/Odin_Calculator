@@ -67,21 +67,14 @@
         //# ONLY  USE 'operator_can_be_entered' property of mode-state_machine
         let mode_state_machine = {num1:true, operator_can_be_entered:false, num2:false};
         
-        //let operator_entry_mode = false;
-        
-        
         back_button.addEventListener("click", function(e) {
                 e.preventDefault();
                 //e.stopPropagation();
                 e.stopImmediatePropagation();
-                //console.log("roc");
-                // square_test(parseInt(slider_text.textContent));
-                
-                console.log(screen_text.textContent != "0");
 
                 let temp = [math_statement.num1, math_statement.operator, math_statement.num2]
 
-                if(screen_text.textContent.includes('BY ZERO')) {
+                if(screen_text.textContent.includes('BY ZERO') || (screen_text.textContent.includes('Infinity'))) {
 
                     screen_text.textContent = "0";
 
@@ -92,7 +85,7 @@
 
                 }
                 if(screen_text.textContent != "0") {
-                    console.log("roc22");
+
                     if((math_statement.num2.length > 0) && (!(math_statement.num2.includes('e'))) ){
                         math_statement.num2 = math_statement.num2.slice(0, -1);
                         
@@ -108,43 +101,22 @@
                         screen_text.textContent = math_statement.num1;
 
                     } else {
-                        console.log("else " + typeof(math_statement.num1) + " " + (!(math_statement.num1.includes('e'))));
+                
                         if((math_statement.num1.length > 0) && (!(math_statement.num1.includes('e')))) {
-                            console.log("else 2 " + math_statement.num1 )
                             math_statement.num1 = math_statement.num1.slice(0, -1);
                             screen_text.textContent = math_statement.num1;
-                            console.log("else 2 " + math_statement.num1);
                         } 
 
                         if(math_statement.num1.length == 0) {
                             math_statement.num1 = '0';
                             screen_text.textContent = '0';
-                            console.log("else 3");
                         }
 
 
                     }
                 }
 
-                //mode_state_machine.num1 = false;
                 mode_state_machine.operator_can_be_entered = true;
-
-                //screen_text.textContent = write_char(screen_text.textContent, "1")
-                
-                console.log("op op " + math_statement.operator);
-            
-                /*
-                // IF STATEMENT NEEDED TO BE ABLE TO ERASE 1ST NUMBER AFTER OPERATOR IS ALREADY ENTERED
-                // ONLY AFTER "e" exponent number is used is user unable to erase a number
-                if(math_statement.operator != '') {
-                    let temp = screen_text.textContent.split(" ");
-                    math_statement.num2 = temp[2];
-                    console.log("back num2 button one " + math_statement.num1 + " " + math_statement.num2);
-                    console.log(temp)
-                } else {
-                    math_statement.num1 = screen_text.textContent;
-                    console.log("back num1 button one " + math_statement.num1);
-                } */
 
                 control_text_size(screen_text);
                
@@ -304,7 +276,6 @@
                 e.preventDefault();
                 //e.stopPropagation();
                 e.stopImmediatePropagation();
-                console.log("roc");
                 
                 if(!(screen_text.textContent.includes('ZERO'))) {
                     mode_state_machine.operator_can_be_entered = true;
@@ -315,30 +286,6 @@
                     math_statement.num1 = temp_list[1];
                     math_statement.num2 = temp_list[2];
                 }
-                
-                /*
-                mode_state_machine.operator_can_be_entered = true;
-    
-
-                if(math_statement.operator != '') {
-
-                    let temp = screen_text.textContent.split(" ");
-                    math_statement.num2 = temp[2];
-                    // console.log("num2 button one " + math_statement.num1 + " " + math_statement.num2);
-                    math_statement.num2 = write_char(math_statement.num2, "0")
-                    temp[2] = math_statement.num2;
-                    screen_text.textContent = temp.join(' ');
-                    control_text_size(screen_text);
-
-                    
-                } else {
-                    math_statement.num1 = screen_text.textContent;
-                    // console.log("_____" + math_statement.num1)
-                    math_statement.num1 = write_char(math_statement.num1, "0")
-                    screen_text.textContent = math_statement.num1;
-                    control_text_size(screen_text);
-                    console.log("num1 button one " + math_statement.num1);
-                } */
 
         });
 
@@ -356,12 +303,11 @@
               //holder but more IF STATEMENT would probably be needed
               if(mode_state_machine.operator_can_be_entered) {
                
-                   // screen_text.textContent = write_number(screen_text.textContent, " - "); 
                    let op_list = op_processor(mode_state_machine, math_statement, screen_text.textContent, "+", "add" )
                    screen_text.textContent = op_list[2];
                    mode_state_machine = op_list[0];
                    math_statement = op_list[1];  
-                   // console.log(math_statement['num1'] + " math_sta")
+                
                    control_text_size(screen_text);
                    
               }
@@ -405,8 +351,6 @@
                 //## THERE MAYBE a way to just use "math_statement.operator" as both a switch and operator value
                 //holder but more IF STATEMENT would probably be needed
                  if(mode_state_machine.operator_can_be_entered) {
-                   // screen_text.textContent = write_number(screen_text.textContent, " - "); 
-                   console.dir(" x button " + Object.keys(math_statement).length)
                    
                    let op_list = op_processor(mode_state_machine, math_statement, screen_text.textContent, "x", "multiply" )
                    screen_text.textContent = op_list[2];
@@ -431,8 +375,6 @@
               //## THERE MAYBE a way to just use "math_statement.operator" as both a switch and operator value
               //holder but more IF STATEMENT would probably be needed
                 if(mode_state_machine.operator_can_be_entered) {
-                   // screen_text.textContent = write_number(screen_text.textContent, " - "); 
-                   console.dir(" x button " + Object.keys(math_statement).length)
                    
                    let op_list = op_processor(mode_state_machine, math_statement, screen_text.textContent, "\u00F7", "divide" )
                    screen_text.textContent = op_list[2];
@@ -465,11 +407,9 @@
 
             if(!(screen_text.textContent.includes('ZERO'))) {
                 if((math_statement['operator'] != '') && (math_statement['num2'] != '')) {
-                    //console.log("decimal insert into num2")
-                    //console.log("1st " + (!(math_statement['num2']).includes('.')))
+                
                     if(!(math_statement['num2']).includes('.')) {
                         math_statement.num2 = write_char(math_statement.num2, ".");
-                        //console.log('.......... ' + math_statement.num2);
                         
                         screen_text.textContent = math_statement.num1 + " " + math_statement.operator + " " + math_statement.num2;
                         
@@ -481,7 +421,6 @@
                     
                 } 
                 else if((math_statement['operator'] != '')) {
-                    // console.log("decimal first char for num2");
 
                     screen_text.textContent = screen_text.textContent + "0.";
                     
@@ -521,10 +460,9 @@
                 if(math_statement.num2 != '') {
                    
                    if((math_statement.num2 == '0') && (math_statement.operation == 'divide')) {
-                        // let answer = String(operations[math_statement.operation](parseFloat(math_statement.num1), parseFloat(math_statement.num2)));
+            
                         let answer = String(operation_func(math_statement.num1, math_statement.num2, math_statement.operation));
                         
-                        // let op_list = op_processor(mode_state_machine, math_statement, screen_text.textContent, "x", "multiply" )
                         screen_text.textContent = "CAN'T DIVIDE A NUMBER BY ZERO";
                         control_text_size(screen_text);
                         math_statement.num1 = "0";
@@ -534,12 +472,8 @@
                         mode_state_machine = {num1:true, operator_can_be_entered:false, num2:false }; 
                    } 
                    else {
-                        // screen_text.textContent = write_number(screen_text.textContent, " - "); 
-                        console.dir(" x button " + Object.keys(math_statement).length)
-                        console.log(" EQUALS ADD" + math_statement.num1 + math_statement.num2);
-                        //let answer = String(operations[math_statement.operation](parseFloat(math_statement.num1), parseFloat(math_statement.num2)));
+                
                         let answer = String(operation_func(math_statement.num1, math_statement.num2, math_statement.operation));
-                        // let op_list = op_processor(mode_state_machine, math_statement, screen_text.textContent, "x", "multiply" )
                         screen_text.textContent = answer;
                         control_text_size(screen_text);
                         math_statement.num1 = answer;
