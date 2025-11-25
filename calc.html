@@ -84,7 +84,16 @@
                     control_text_size(screen_text);
 
                 }
-                if(screen_text.textContent != "0") {
+                else if((math_statement.operator == '') && ((parseFloat(math_statement.num1) < 0))) {
+                    screen_text.textContent = "0";
+
+                    math_statement = {num1:'0', num2:'', operator:'', operation:'', answer:''};
+                    mode_state_machine = {num1:true, operator_can_be_entered:false, num2:false };
+                
+                    control_text_size(screen_text);
+                }
+
+                else if(screen_text.textContent != "0") {
 
                     if((math_statement.num2.length > 0) && (!(math_statement.num2.includes('e'))) ){
                         math_statement.num2 = math_statement.num2.slice(0, -1);
