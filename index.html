@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        
+        <div id="calculator">
+            <div id="screen">
+                <div id="text">0</div>
+            </div>
+            <div class="button_container">
+                <button class="num_button" id="one">1</button>
+                <button class="num_button" id="two">2</button>
+                <button class="num_button" id="three">3</button>
+                <button class="op_button" id="add">+</button>
+                <button class="num_button" id="four">4</button>
+                <button class="num_button" id="five">5</button>
+                <button class="num_button" id="six">6</button>
+                <button class="op_button" id="minus">-</button>
+                <button class="num_button" id="seven">7</button>
+                <button class="num_button" id="eight">8</button>
+                <button class="num_button" id="nine">9</button>
+                <button class="op_button" id="x">x</button>
+                <button class="num_button" id="zero">0</button>
+                <button class="num_button" id="decimal">.</button>
+                <button class="num_button" id="back">&#x232B;</button>
+                <button class="op_button" id="divide">&divide</button>
+                <button class="num_button" id="clear">CLR</button>
+                <button class="op_button" id="equal">=</button>
+            </div>
+
+        </div>
+    </div>
+
+     <script type="text/javascript" src="calc.js"></script>
+    <script>
+        const screen_text = document.querySelector('#text');
+
+        const button1 = document.querySelector('#one');
+        const button2 = document.querySelector('#two');
+        const button3 = document.querySelector('#three');
+        const button4 = document.querySelector('#four');
+        const button5 = document.querySelector('#five');
+        const button6 = document.querySelector('#six');
+        const button7 = document.querySelector('#seven');
+        const button8 = document.querySelector('#eight');
+        const button9 = document.querySelector('#nine');
+        const button0 = document.querySelector('#zero');
+
+        const add_button = document.querySelector('#add');
+        const minus_button = document.querySelector('#minus');
+        const x_button = document.querySelector('#x');
+        const divide_button = document.querySelector('#divide');
+
+        const decimal_button = document.querySelector('#decimal');
+        const equal_button = document.querySelector('#equal');
+        const clear_button = document.querySelector('#clear');
+        const back_button = document.querySelector('#back');
+
+        let math_statement = {num1:'0', num2:'', operator:'', operation:'', answer:''};
+        
+        //# ONLY  USE 'operator_can_be_entered' property of mode-state_machine
+        let mode_state_machine = {num1:true, operator_can_be_entered:false, num2:false};
+        
+        back_button.addEventListener("click", function(e) {
+                e.preventDefault();
+                //e.stopPropagation();
+                e.stopImmediatePropagation();
+
+                let temp = [math_statement.num1, math_statement.operator, math_statement.num2]
+
+                if(screen_text.textContent.includes('BY ZERO') || (screen_text.textContent.includes('Infinity'))) {
+
+                    screen_text.textContent = "0";
+
+                    math_statement = {num1:'0', num2:'', operator:'', operation:'', answer:''};
+                    mode_state_machine = {num1:true, operator_can_be_entered:false, num2:false };
+                
+                    control_text_size(screen_text);
+
+                }
+                else if((math_statement.operator == '') && ((parseFloat(math_statement.num1) < 0))) {
+                    screen_text.textContent = "0";
+
+                    math_statement = {num1:'0', num2:'', operator:'', operation:'', answer:''};
+                    mode_state_machine = {num1:true, operator_can_be_entered:false, num2:false };
+                
+                    control_text_size(screen_text);
+                }
+
+                else if(screen_text.textContent != "0") {
+
+                    if((math_statement.num2.length > 0) && (!(math_statement.num2.includes('e'))) ){
+                        math_statement.num2 = math_statement.num2.slice(0, -1);
+                        
+                        if(math_statement.num2.length > 0) {
+                            screen_text.textContent = math_statement.num1 + " " + math_statement.operator + " " + math_statement.num2;
+                        } else {
+                            screen_text.textContent = math_statement.num1 + " " + math_statement.operator + " ";
+                        }
+
+                    } else if(math_statement.operator.length > 0) {
+                        math_statement.operator = "";
+                        mode_state_machine.operator_can_be_entered = true;
+                        screen_text.textContent = math_statement.num1;
+
+                    } else {
+                
+                        if((math_statement.num1.length > 0) && (!(math_statement.num1.includes('e')))) {
+                            math_statement.num1 = math_statement.num1.slice(0, -1);
+                            screen_text.textContent = math_statement.num1;
+                        } 
+
+                        if(math_statement.num1.length == 0) {
+                            math_statement.num1 = '0';
+                            screen_text.textContent = '0';
+                        }
+
+
+                    }
+                }
+
+                mode_state_machine.operator_can_be_entered = true;
+
+                control_text_size(screen_text);
+               
+            });
+
+        button1.addEventListener("click", function(e) {
+                e.preventDefault();
+                //e.stopPropagation();
+                e.stopImmediatePropagation();
+
+                if(!(screen_text.textContent.includes('ZERO'))) {
+                    mode_state_machine.operator_can_be_entered = true;
+
+                    let temp_list = number_processor( math_statement.operator, screen_text.textContent, "1");
+                    screen_text.textContent = temp_list[0];
+                    control_text_size(screen_text);
+                    math_statement.num1 = temp_list[1];
+                    math_statement.num2 = temp_list[2];
+                }
+                
+               
+            });
+
+        button2.addEventListener("click", function(e) {
+                e.preventDefault();
+                //e.stopPropagation();
+                e.stopImmediatePropagation();
+        
+                if(!(screen_text.textContent.includes('ZERO'))) {
+                    mode_state_machine.operator_can_be_entered = true;
+
+                    let temp_list = number_processor( math_statement.operator, screen_text.textContent, "2");
+                    screen_text.textContent = temp_list[0];
+                    control_text_size(screen_text);
+                    math_statement.num1 = temp_list[1];
+                    math_statement.num2 = temp_list[2];
+                }
+        });
+
+        button3.addEventListener("click", function(e) {
+                e.preventDefault();
+                //e.stopPropagation();
+                e.stopImmediatePropagation();
+              
+                if(!(screen_text.textContent.includes('ZERO'))) {
+                    mode_state_machine.operator_can_be_entered = true;
+
+                    let temp_list = number_processor( math_statement.operator, screen_text.textContent, "3");
+                    screen_text.textContent = temp_list[0];
+                    control_text_size(screen_text);
+                    math_statement.num1 = temp_list[1];
+                    math_statement.num2 = temp_list[2];
+                }
+
+        });
+
+        button4.addEventListener("click", function(e) {
+                e.preventDefault();
+                //e.stopPropagation();
+                e.stopImmediatePropagation();
+              
+                if(!(screen_text.textContent.includes('ZERO'))) {
+                    mode_state_machine.operator_can_be_entered = true;
+
+                    let temp_list = number_processor( math_statement.operator, screen_text.textContent, "4");
+                    screen_text.textContent = temp_list[0];
+                    control_text_size(screen_text);
+                    math_statement.num1 = temp_list[1];
+                    math_statement.num2 = temp_list[2];
+                }
+        });
+
+        button5.addEventListener("click", function(e) {
+                e.preventDefault();
+                //e.stopPropagation();
+                e.stopImmediatePropagation();
+              
+                
+                if(!(screen_text.textContent.includes('ZERO'))) {
+                    mode_state_machine.operator_can_be_entered = true;
+
+                    let temp_list = number_processor( math_statement.operator, screen_text.textContent, "5");
+                    screen_text.textContent = temp_list[0];
+                    control_text_size(screen_text);
+                    math_statement.num1 = temp_list[1];
+                    math_statement.num2 = temp_list[2];
+                }
+        });
+
+        button6.addEventListener("click", function(e) {
+                e.preventDefault();
+                //e.stopPropagation();
+                e.stopImmediatePropagation();
+              
+               if(!(screen_text.textContent.includes('ZERO'))) {
+                    mode_state_machine.operator_can_be_entered = true;
+
+                    let temp_list = number_processor( math_statement.operator, screen_text.textContent, "6");
+                    screen_text.textContent = temp_list[0];
+                    control_text_size(screen_text);
+                    math_statement.num1 = temp_list[1];
+                    math_statement.num2 = temp_list[2];
+                }
+        });
+
+        button7.addEventListener("click", function(e) {
+                e.preventDefault();
+                //e.stopPropagation();
+                e.stopImmediatePropagation();
+              
+                if(!(screen_text.textContent.includes('ZERO'))) {
+                    mode_state_machine.operator_can_be_entered = true;
+
+                    let temp_list = number_processor( math_statement.operator, screen_text.textContent, "7");
+                    screen_text.textContent = temp_list[0];
+                    control_text_size(screen_text);
+                    math_statement.num1 = temp_list[1];
+                    math_statement.num2 = temp_list[2];
+                }
+        });
+
+        button8.addEventListener("click", function(e) {
+                e.preventDefault();
+                //e.stopPropagation();
+                e.stopImmediatePropagation();
+              
+                if(!(screen_text.textContent.includes('ZERO'))) {
+                    mode_state_machine.operator_can_be_entered = true;
+
+                    let temp_list = number_processor( math_statement.operator, screen_text.textContent, "8");
+                    screen_text.textContent = temp_list[0];
+                    control_text_size(screen_text);
+                    math_statement.num1 = temp_list[1];
+                    math_statement.num2 = temp_list[2];
+                }
+        });
+
+        button9.addEventListener("click", function(e) {
+                e.preventDefault();
+                //e.stopPropagation();
+                e.stopImmediatePropagation();
+              
+                if(!(screen_text.textContent.includes('ZERO'))) {
+                    mode_state_machine.operator_can_be_entered = true;
+
+                    let temp_list = number_processor( math_statement.operator, screen_text.textContent, "9");
+                    screen_text.textContent = temp_list[0];
+                    control_text_size(screen_text);
+                    math_statement.num1 = temp_list[1];
+                    math_statement.num2 = temp_list[2];
+                }
+        });
+
+        
+
+        button0.addEventListener("click", function(e) {
+                e.preventDefault();
+                //e.stopPropagation();
+                e.stopImmediatePropagation();
+                
+                if(!(screen_text.textContent.includes('ZERO'))) {
+                    mode_state_machine.operator_can_be_entered = true;
+
+                    let temp_list = number_processor( math_statement.operator, screen_text.textContent, "0");
+                    screen_text.textContent = temp_list[0];
+                    control_text_size(screen_text);
+                    math_statement.num1 = temp_list[1];
+                    math_statement.num2 = temp_list[2];
+                }
+
+        });
+
+        add_button.addEventListener("click", function(e) {
+                e.preventDefault();
+                //e.stopPropagation();
+                e.stopImmediatePropagation();
+                
+              //##  mode_state_machine.operator_can_be_entered as a switch and is needed to prevent
+              //## double entry of operators but also allows this button to be used as an equal button but
+              //## ADDS "+" after CALCULATION is done. A value of "true", enables button function and "false" does
+              //## THE OPPOSITE. The value is set in various places in "calc.html" and "calc.js"
+              
+              //## THERE MAYBE a way to just use "math_statement.operator" as both a switch and operator value
+              //holder but more IF STATEMENT would probably be needed
+              if(mode_state_machine.operator_can_be_entered) {
+               
+                   let op_list = op_processor(mode_state_machine, math_statement, screen_text.textContent, "+", "add" )
+                   screen_text.textContent = op_list[2];
+                   mode_state_machine = op_list[0];
+                   math_statement = op_list[1];  
+                
+                   control_text_size(screen_text);
+                   
+              }
+
+                
+        });
+
+        minus_button.addEventListener("click", function(e) {
+                e.preventDefault();
+                //e.stopPropagation();
+                e.stopImmediatePropagation();
+                
+                //##  mode_state_machine.operator_can_be_entered as a switch and is needed to prevent
+                //## double entry of operators but also allows this button to be used as an equal button but
+                //## ADDS "-" after CALCULATION is done. A value of "true", enables button function and "false" does
+                //## THE OPPOSITE. The value is set in various places in "calc.html" and "calc.js"
+              
+                //## THERE MAYBE a way to just use "math_statement.operator" as both a switch and operator value
+                //holder but more IF STATEMENT would probably be needed
+               
+                if(mode_state_machine.operator_can_be_entered) {
+                   let op_list = op_processor(mode_state_machine, math_statement, screen_text.textContent, "-", "minus" )
+                   screen_text.textContent = op_list[2];
+                   control_text_size(screen_text);
+                   mode_state_machine = op_list[0];
+                   math_statement = op_list[1];  
+                }
+                
+        });
+
+        x_button.addEventListener("click", function(e) {
+                e.preventDefault();
+                //e.stopPropagation();
+                e.stopImmediatePropagation();
+
+                 //##  mode_state_machine.operator_can_be_entered as a switch and is needed to prevent
+                //## double entry of operators but also allows this button to be used as an equal button but
+                //## ADDS "x" after CALCULATION is done. A value of "true", enables button function and "false" does
+                //## THE OPPOSITE. The value is set in various places in "calc.html" and "calc.js"
+              
+                //## THERE MAYBE a way to just use "math_statement.operator" as both a switch and operator value
+                //holder but more IF STATEMENT would probably be needed
+                 if(mode_state_machine.operator_can_be_entered) {
+                   
+                   let op_list = op_processor(mode_state_machine, math_statement, screen_text.textContent, "x", "multiply" )
+                   screen_text.textContent = op_list[2];
+                   control_text_size(screen_text);
+                   mode_state_machine = op_list[0];
+                   math_statement = op_list[1];  
+                }
+                
+        });
+
+        divide_button.addEventListener("click", function(e) {
+                e.preventDefault();
+                //e.stopPropagation();
+                e.stopImmediatePropagation();
+               
+
+                //##  mode_state_machine.operator_can_be_entered as a switch and is needed to prevent
+              //## double entry of operators but also allows this button to be used as an equal button but
+              //## ADDS "÷" after CALCULATION is done. A value of "true", enables button function and "false" does
+              //## THE OPPOSITE. The value is set in various places in "calc.html" and "calc.js"
+              
+              //## THERE MAYBE a way to just use "math_statement.operator" as both a switch and operator value
+              //holder but more IF STATEMENT would probably be needed
+                if(mode_state_machine.operator_can_be_entered) {
+                   
+                   let op_list = op_processor(mode_state_machine, math_statement, screen_text.textContent, "\u00F7", "divide" )
+                   screen_text.textContent = op_list[2];
+                   control_text_size(screen_text);
+                   mode_state_machine = op_list[0];
+                   math_statement = op_list[1];  
+                }
+                
+        });
+
+        clear_button.addEventListener("click", function(e) {
+                e.preventDefault();
+                //e.stopPropagation();
+                e.stopImmediatePropagation();
+
+                screen_text.textContent = "0";
+
+                math_statement = {num1:'0', num2:'', operator:'', operation:'', answer:''};
+                mode_state_machine = {num1:true, operator_can_be_entered:false, num2:false };
+                
+                control_text_size(screen_text);
+                
+        });
+
+        decimal_button.addEventListener("click", function(e) {
+            e.preventDefault();
+            //e.stopPropagation();
+            e.stopImmediatePropagation();
+    
+
+            if(!(screen_text.textContent.includes('ZERO'))) {
+                if((math_statement['operator'] != '') && (math_statement['num2'] != '')) {
+                
+                    if(!(math_statement['num2']).includes('.')) {
+                        math_statement.num2 = write_char(math_statement.num2, ".");
+                        
+                        screen_text.textContent = math_statement.num1 + " " + math_statement.operator + " " + math_statement.num2;
+                        
+                        let temp = screen_text.textContent.split(" ");
+                        math_statement.num2 = temp[2];
+                        
+                        control_text_size(screen_text);
+                    }
+                    
+                } 
+                else if((math_statement['operator'] != '')) {
+
+                    screen_text.textContent = screen_text.textContent + "0.";
+                    
+                    math_statement.num2 = "0.";
+
+                }
+                //# Nov 14 2025
+                else if(!(math_statement['num1']).includes('.')) {
+                  
+                   if(math_statement.answer == '') {
+                    screen_text.textContent = write_char(screen_text.textContent, ".");
+                    math_statement.num1 = screen_text.textContent;
+                    control_text_size(screen_text);
+                   } 
+                }
+              
+                else {
+
+                    if(math_statement.num1 == '0') {
+                        screen_text.textContent = '0.';
+                        math_statement.num1 = '0.';
+
+                        control_text_size(screen_text);
+
+                    }
+             
+                }
+            }
+                
+        });
+
+         equal_button.addEventListener("click", function(e) {
+                e.preventDefault();
+                //e.stopPropagation();
+                e.stopImmediatePropagation();
+                
+                if(math_statement.num2 != '') {
+                   
+                   if((math_statement.num2 == '0') && (math_statement.operation == 'divide')) {
+            
+                        let answer = String(operation_func(math_statement.num1, math_statement.num2, math_statement.operation));
+                        
+                        screen_text.textContent = "CAN'T DIVIDE A NUMBER BY ZERO";
+                        control_text_size(screen_text);
+                        math_statement.num1 = "0";
+                        math_statement.operator = '';
+                        math_statement.operation = '';
+                        math_statement.num2 = '';
+                        mode_state_machine = {num1:true, operator_can_be_entered:false, num2:false }; 
+                   } 
+                   else {
+                
+                        let answer = String(operation_func(math_statement.num1, math_statement.num2, math_statement.operation));
+                        screen_text.textContent = answer;
+                        control_text_size(screen_text);
+                        math_statement.num1 = answer;
+                        math_statement.operator = '';
+                        math_statement.operation = '';
+                        math_statement.num2 = '';
+                        mode_state_machine = {num1:true, operator_can_be_entered:true, num2:false }; 
+                   }
+                   
+                }
+                
+        });
+ 
+
+    </script>
+    
+</body>
+</html>
